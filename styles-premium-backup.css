@@ -1,0 +1,1551 @@
+/**
+ * Premium overrides — ультра-премиум версия лендинга.
+ * Подключать после styles.css.
+ */
+
+/* Кнопка смены темы — лёгкая моргающая подсветка (приглашение переключить) */
+@keyframes theme-toggle-glow {
+  0%, 100% { box-shadow: 0 0 0 1px var(--line), 0 0 12px rgba(79, 119, 255, 0.2), 0 0 24px rgba(79, 119, 255, 0.08); }
+  50%      { box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.4), 0 0 16px rgba(79, 119, 255, 0.35), 0 0 32px rgba(79, 119, 255, 0.15); }
+}
+@keyframes theme-toggle-glow-light {
+  0%, 100% { box-shadow: 0 0 0 1px var(--line), 0 0 12px rgba(79, 119, 255, 0.15), 0 0 20px rgba(79, 119, 255, 0.06); }
+  50%      { box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.35), 0 0 18px rgba(79, 119, 255, 0.28), 0 0 28px rgba(79, 119, 255, 0.12); }
+}
+.page-premium .theme-toggle {
+  animation: theme-toggle-glow 2.5s ease-in-out infinite;
+}
+html[data-theme="light"] .page-premium .theme-toggle {
+  animation-name: theme-toggle-glow-light;
+}
+.page-premium .theme-toggle:hover {
+  animation: none;
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.3), 0 4px 20px rgba(79, 119, 255, 0.25), 0 0 28px rgba(79, 119, 255, 0.15);
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-premium .theme-toggle {
+    animation: none;
+    box-shadow: 0 0 0 1px var(--line), 0 0 12px rgba(79, 119, 255, 0.15);
+  }
+}
+
+/* ========== 1) Hero: визуальная иерархия + контраст в обеих темах ========== */
+.page-premium .hero__title {
+  /* Тёмная тема: светлый градиент (как в базе), не трогаем fill */
+  background: linear-gradient(180deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.9) 50%, rgba(255,255,255,.85) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--text);
+}
+html[data-theme="light"] .page-premium .hero__title {
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #0f172a;
+}
+
+.page-premium .hero__subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  max-width: 54ch;
+}
+html[data-theme="light"] .page-premium .hero__subtitle {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/* Pills и quick в hero — явный контраст */
+html[data-theme="light"] .page-premium .hero__badge .pill {
+  color: #1e293b;
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+html[data-theme="light"] .page-premium .hero__badge .pill--muted {
+  color: #475569;
+}
+html[data-theme="light"] .page-premium .hero__quick .quick__k {
+  color: #64748b;
+}
+html[data-theme="light"] .page-premium .hero__quick .quick__v {
+  color: #0f172a;
+}
+.page-premium .quick__icon {
+  gap: 8px;
+}
+.page-premium .quick__icon-label {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-color: inherit;
+}
+
+/* Фокус / Город / Контакты — обводка, свечение, больше воздуха */
+.page-premium .hero__quick .quick {
+  padding: 20px 22px;
+  line-height: 1.55;
+  border-radius: 16px;
+  border: 1px solid rgba(79, 119, 255, 0.2);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.1),
+              0 8px 32px rgba(0, 0, 0, 0.25),
+              0 0 32px rgba(79, 119, 255, 0.06),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: box-shadow 0.3s ease, border-color 0.25s ease;
+}
+.page-premium .hero__quick .quick:hover {
+  border-color: rgba(79, 119, 255, 0.3);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.2),
+              0 12px 40px rgba(0, 0, 0, 0.3),
+              0 0 48px rgba(79, 119, 255, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.page-premium .hero__quick .quick__k {
+  margin-bottom: 4px;
+  font-size: 11.5px;
+  transition: color 0.2s ease;
+}
+.page-premium .hero__quick .quick__v {
+  margin-top: 12px;
+  line-height: 1.65;
+  font-size: 15px;
+  transition: color 0.2s ease;
+}
+[data-theme="light"] .page-premium .hero__quick .quick {
+  border-color: rgba(79, 119, 255, 0.25);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.12),
+              0 8px 32px rgba(0, 0, 0, 0.06),
+              0 0 24px rgba(79, 119, 255, 0.05),
+              inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+[data-theme="light"] .page-premium .hero__quick .quick:hover {
+  border-color: rgba(79, 119, 255, 0.35);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.2),
+              0 12px 40px rgba(0, 0, 0, 0.05),
+              0 0 32px rgba(79, 119, 255, 0.08);
+}
+
+/* ========== 2) CTA «Связаться» — живая реакция ========== */
+.page-premium .hero__cta .btn--ghost {
+  position: relative;
+  overflow: hidden;
+}
+.page-premium .hero__cta .btn--ghost .btn__text {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.page-premium .hero__cta .btn--ghost .btn__arrow {
+  display: inline-block;
+  margin-left: 6px;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.page-premium .hero__cta .btn--ghost:hover .btn__text {
+  transform: translateX(3px);
+}
+.page-premium .hero__cta .btn--ghost:hover .btn__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ========== 3) Фото — премиум без рамки ========== */
+/* Аватар — обводка, свечение, лёгкий подъём при hover */
+.page-premium .avatar {
+  border: 1px solid rgba(79, 119, 255, 0.2);
+  box-shadow:
+    0 0 0 1px rgba(79, 119, 255, 0.2),
+    0 0 24px rgba(79, 119, 255, 0.12),
+    0 32px 64px rgba(0, 0, 0, 0.45),
+    0 0 80px rgba(79, 119, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+  clip-path: inset(0 round var(--radius3));
+}
+.page-premium .avatar::before {
+  display: none;
+}
+.page-premium .avatar:hover {
+  transform: translateY(-8px);
+  border-color: rgba(79, 119, 255, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(79, 119, 255, 0.3),
+    0 0 40px rgba(79, 119, 255, 0.2),
+    0 40px 80px rgba(0, 0, 0, 0.5),
+    0 0 120px rgba(79, 119, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.page-premium .avatar img,
+.page-premium .avatar .avatar__img {
+  border-radius: inherit;
+}
+[data-theme="light"] .page-premium .avatar {
+  border-color: rgba(79, 119, 255, 0.2);
+  box-shadow:
+    0 0 0 1px rgba(79, 119, 255, 0.15),
+    0 0 20px rgba(79, 119, 255, 0.08),
+    0 28px 56px rgba(0, 0, 0, 0.14),
+    0 0 60px rgba(79, 119, 255, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+[data-theme="light"] .page-premium .avatar:hover {
+  border-color: rgba(79, 119, 255, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(79, 119, 255, 0.25),
+    0 0 32px rgba(79, 119, 255, 0.15),
+    0 36px 72px rgba(0, 0, 0, 0.12),
+    0 0 80px rgba(79, 119, 255, 0.1);
+}
+
+/* ========== 4) Навигация — active underline + sticky shrink ========== */
+.page-premium .header {
+  transition: padding 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.25s ease;
+}
+.page-premium .header.header--scrolled .header__inner {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.page-premium .nav {
+  position: relative;
+}
+.page-premium .nav__link {
+  position: relative;
+  padding-bottom: 10px;
+}
+.page-premium .nav__link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gradient-brand);
+  box-shadow: 0 0 0 rgba(79, 119, 255, 0);
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+  transform: translateX(-50%);
+}
+.page-premium .nav__link:hover::after {
+  width: 100%;
+  box-shadow: 0 0 10px rgba(79, 119, 255, 0.5);
+}
+.page-premium .nav__indicator {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gradient-brand);
+  box-shadow: 0 0 12px rgba(79, 119, 255, 0.4);
+  transition: left 0.4s cubic-bezier(0.22, 1, 0.36, 1), width 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+  pointer-events: none;
+}
+.page-premium .nav__indicator.nav__indicator--hidden {
+  opacity: 0;
+}
+
+/* ========== 5) Карточки — без градиента внутри, только тени и hover ========== */
+.page-premium .card::after,
+.page-premium .hero__card::after {
+  display: none;
+}
+.page-premium .card > *,
+.page-premium .hero__card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== 6) Hero background — лёгкий drift ========== */
+.page-premium .hero__bg {
+  animation: heroBgDrift 25s ease-in-out infinite;
+}
+@keyframes heroBgDrift {
+  0%, 100% { opacity: 1; transform: translate(0, 0) scale(1); }
+  33% { opacity: 0.98; transform: translate(1%, 0.5%) scale(1.02); }
+  66% { opacity: 1; transform: translate(-0.5%, -0.3%) scale(0.99); }
+}
+
+/* ========== 7) Список «Сильные стороны» — reveal-stagger ========== */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 0.19s; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 0.26s; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 0.33s; }
+.reveal-stagger > *:nth-child(n + 6) { transition-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-stagger > *,
+  .reveal-stagger.is-visible > * { opacity: 1; transform: none; transition: none; }
+  .card::before,
+  .hero__card::before { animation: none; }
+  .hero__bg { animation: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ВИДНО СРАЗУ — отличия без hover/скролла
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Фон страницы — градиент без fixed (fixed сильно грузит скролл в браузере) */
+/* Градиент прокручивается вместе со страницей для плавного скролла */
+
+/* Заголовки секций — градиентный текст (Навыки, Проекты, Опыт и т.д.) */
+.page-premium .section__title {
+  background: linear-gradient(135deg, #7b9aff 0%, #a78bfa 50%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  font-weight: 800;
+}
+[data-theme="light"] .page-premium .section__title {
+  background: linear-gradient(135deg, #4f77ff 0%, #7c3aed 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Блоки навыков (skillgroup) — без градиента внутри, плавные тени при смене темы/hover */
+.page-premium .skillgroup {
+  border: 1px solid var(--glass-border);
+  background: var(--card);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: box-shadow 0.35s ease, border-color 0.25s ease;
+}
+[data-theme="light"] .page-premium .skillgroup {
+  border: 1px solid var(--glass-border);
+  background: var(--card);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.page-premium .skillgroup:hover {
+  border-color: rgba(79, 119, 255, 0.25);
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.38),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+[data-theme="light"] .page-premium .skillgroup:hover {
+  border-color: rgba(79, 119, 255, 0.3);
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Отдельный скилл (.logo) — левый акцент по умолчанию */
+.page-premium .skillgrid .logo {
+  position: relative;
+  padding-left: 16px;
+  background: rgba(79, 119, 255, 0.04);
+  border-color: rgba(79, 119, 255, 0.15);
+  box-shadow: inset 3px 0 0 var(--brand), 0 4px 16px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease, border-color 0.25s ease, background 0.25s ease;
+}
+[data-theme="light"] .page-premium .skillgrid .logo {
+  background: rgba(79, 119, 255, 0.05);
+  border-color: rgba(79, 119, 255, 0.2);
+  box-shadow: inset 3px 0 0 var(--brand), 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Блок «Сильные стороны» в hero — обводка, тени, выделение заголовка */
+.page-premium .hero__card {
+  border: 1px solid rgba(79, 119, 255, 0.2);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.12),
+              0 16px 48px rgba(0, 0, 0, 0.35),
+              0 0 40px rgba(79, 119, 255, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: box-shadow 0.35s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+.page-premium .hero__card:hover {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.25),
+              0 20px 56px rgba(0, 0, 0, 0.4),
+              0 0 56px rgba(79, 119, 255, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.page-premium .hero__card-title {
+  text-shadow: 0 0 20px rgba(79, 119, 255, 0.25),
+               0 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.01em;
+  transition: text-shadow 0.25s ease;
+}
+[data-theme="light"] .page-premium .hero__card {
+  border-color: rgba(79, 119, 255, 0.25);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.15),
+              0 16px 48px rgba(0, 0, 0, 0.08),
+              0 0 32px rgba(79, 119, 255, 0.06),
+              inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+[data-theme="light"] .page-premium .hero__card:hover {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.3),
+              0 20px 56px rgba(0, 0, 0, 0.06),
+              0 0 40px rgba(79, 119, 255, 0.08);
+}
+[data-theme="light"] .page-premium .hero__card-title {
+  text-shadow: 0 0 24px rgba(79, 119, 255, 0.2),
+               0 1px 1px rgba(0, 0, 0, 0.06);
+}
+
+/* Карточки секций — тонкая градиентная обводка по умолчанию */
+.page-premium .card {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.1),
+              0 12px 40px rgba(0, 0, 0, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+[data-theme="light"] .page-premium .card {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.12),
+              0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* Подзаголовок секции (section__hint) — чуть ярче */
+.page-premium .section__hint {
+  color: var(--muted);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ULTRA PREMIUM — топовый лендинг (hover, hero, детали)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Hero: градиентная вуаль + акцент на подчёркивании имени */
+.page-premium .hero {
+  position: relative;
+}
+.page-premium .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(79, 119, 255, 0.06) 0%, transparent 50%),
+              radial-gradient(ellipse 60% 80% at 80% 60%, rgba(139, 92, 246, 0.05) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+html[data-theme="light"] .page-premium .hero::after {
+  background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(79, 119, 255, 0.03) 0%, transparent 50%),
+              radial-gradient(ellipse 60% 80% at 80% 60%, rgba(139, 92, 246, 0.02) 0%, transparent 45%);
+}
+.page-premium .hero .hero__grid,
+.page-premium .hero .container { position: relative; z-index: 1; }
+.page-premium .hero__title::after {
+  box-shadow: 0 0 28px rgba(79, 119, 255, 0.5), 0 0 60px rgba(79, 119, 255, 0.2);
+  transition: box-shadow 0.35s ease;
+}
+html[data-theme="light"] .page-premium .hero__title::after {
+  box-shadow: 0 0 16px rgba(79, 119, 255, 0.35);
+}
+
+/* Pills — лёгкое свечение при hover */
+.page-premium .hero__badge .pill {
+  transition: transform 0.25s ease, box-shadow 0.3s ease, border-color 0.25s ease;
+}
+.page-premium .hero__badge .pill:hover {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.25), 0 6px 24px rgba(79, 119, 255, 0.15);
+}
+
+/* Primary CTA — shine при hover */
+.page-premium .hero__cta .btn--primary {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.35s ease;
+}
+.page-premium .hero__cta .btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(79, 119, 255, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+.page-premium .hero__cta .btn--primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+.page-premium .hero__cta .btn--primary:hover::after {
+  left: 100%;
+}
+
+/* Карточки — лёгкий подъём + глубже тень при hover */
+.page-premium .card {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+}
+.page-premium .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+[data-theme="light"] .page-premium .card:hover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(79, 119, 255, 0.08);
+}
+
+/* Раздел «Проекты» — обводка, свечение, акцент на лого и заголовке */
+.page-premium .card--project {
+  border: 1px solid rgba(79, 119, 255, 0.2);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.12),
+              0 16px 48px rgba(0, 0, 0, 0.35),
+              0 0 40px rgba(79, 119, 255, 0.06),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.page-premium .card--project:hover {
+  border-color: rgba(79, 119, 255, 0.3);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.22),
+              0 24px 56px rgba(0, 0, 0, 0.4),
+              0 0 56px rgba(79, 119, 255, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.page-premium .card--project .card__title {
+  text-shadow: 0 0 20px rgba(79, 119, 255, 0.2),
+               0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: text-shadow 0.25s ease;
+}
+.page-premium .card--project .card__project-logo {
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(79, 119, 255, 0.12);
+  margin-bottom: 12px;
+  transition: border-bottom-color 0.25s ease;
+}
+.page-premium .card--project .card__project-logo-img {
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+[data-theme="light"] .page-premium .card--project {
+  border-color: rgba(79, 119, 255, 0.25);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.15),
+              0 16px 48px rgba(0, 0, 0, 0.08),
+              0 0 32px rgba(79, 119, 255, 0.05),
+              inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+[data-theme="light"] .page-premium .card--project:hover {
+  border-color: rgba(79, 119, 255, 0.35);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.25),
+              0 24px 56px rgba(0, 0, 0, 0.06),
+              0 0 48px rgba(79, 119, 255, 0.08);
+}
+[data-theme="light"] .page-premium .card--project .card__title {
+  text-shadow: 0 0 24px rgba(79, 119, 255, 0.15),
+               0 1px 1px rgba(0, 0, 0, 0.05);
+}
+[data-theme="light"] .page-premium .card--project .card__project-logo {
+  border-bottom-color: rgba(79, 119, 255, 0.15);
+}
+
+/* Раздел «Опыт и подход» — обводка, свечение, акцент на блоке иконка+заголовок */
+.page-premium #experience .card {
+  border: 1px solid rgba(79, 119, 255, 0.2);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.12),
+              0 16px 48px rgba(0, 0, 0, 0.35),
+              0 0 40px rgba(79, 119, 255, 0.06),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.page-premium #experience .card:hover {
+  border-color: rgba(79, 119, 255, 0.3);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.22),
+              0 24px 56px rgba(0, 0, 0, 0.4),
+              0 0 56px rgba(79, 119, 255, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.page-premium #experience .card__topic {
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(79, 119, 255, 0.15);
+  transition: border-bottom-color 0.25s ease;
+}
+.page-premium #experience .card__topic .card__title {
+  text-shadow: 0 0 18px rgba(79, 119, 255, 0.22),
+               0 1px 2px rgba(0, 0, 0, 0.12);
+  transition: text-shadow 0.25s ease;
+}
+.page-premium #experience .card__topic-icon {
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(79, 119, 255, 0.35));
+}
+[data-theme="light"] .page-premium #experience .card {
+  border-color: rgba(79, 119, 255, 0.25);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.15),
+              0 16px 48px rgba(0, 0, 0, 0.08),
+              0 0 32px rgba(79, 119, 255, 0.05),
+              inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+[data-theme="light"] .page-premium #experience .card:hover {
+  border-color: rgba(79, 119, 255, 0.35);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.25),
+              0 24px 56px rgba(0, 0, 0, 0.06),
+              0 0 48px rgba(79, 119, 255, 0.08);
+}
+[data-theme="light"] .page-premium #experience .card__topic {
+  border-bottom-color: rgba(79, 119, 255, 0.18);
+}
+[data-theme="light"] .page-premium #experience .card__topic .card__title {
+  text-shadow: 0 0 20px rgba(79, 119, 255, 0.12),
+               0 1px 1px rgba(0, 0, 0, 0.05);
+}
+[data-theme="light"] .page-premium #experience .card__topic-icon {
+  filter: brightness(0) drop-shadow(0 0 6px rgba(79, 119, 255, 0.25));
+}
+
+/* Плашка «изучаю» у скиллов — аккуратнее и с лёгким свечением */
+.page-premium .skillgrid .tag--learning {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(92, 235, 190, 0.35) inset,
+              0 2px 10px rgba(92, 235, 190, 0.25),
+              0 0 20px rgba(92, 235, 190, 0.15);
+  transition: box-shadow 0.25s ease;
+}
+[data-theme="light"] .page-premium .skillgrid .tag--learning {
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.4) inset,
+              0 2px 10px rgba(16, 185, 129, 0.2),
+              0 0 16px rgba(16, 185, 129, 0.12);
+}
+
+/* Разделитель между секциями — ярче градиент */
+.page-premium .section + .section::before {
+  height: 3px;
+  opacity: 1;
+  box-shadow: 0 0 24px rgba(79, 119, 255, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Scroll progress — градиент, толще и заметнее */
+.page-premium .scrollProgress {
+  height: 6px;
+  background: linear-gradient(90deg, var(--brand), var(--brand2));
+  box-shadow: 0 0 20px rgba(79, 119, 255, 0.5);
+}
+
+/* Кнопка «Наверх» — плавнее появление + лёгкий pulse */
+.page-premium .back-to-top {
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, text-shadow 0.25s ease;
+}
+.page-premium .back-to-top:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 24px rgba(79, 119, 255, 0.3);
+}
+
+/* Contact card — мягкое свечение */
+.page-premium .contact__card {
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+.page-premium .contact__card:hover {
+  box-shadow: 0 0 60px rgba(79, 119, 255, 0.2), 0 20px 50px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Footer — верхняя граница с градиентом + лёгкое свечение текста */
+.page-premium .footer {
+  position: relative;
+}
+.page-premium .footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79, 119, 255, 0.4), rgba(139, 92, 246, 0.3), transparent);
+  opacity: 0.8;
+  transition: opacity 0.25s ease;
+}
+.page-premium .footer:hover::before {
+  opacity: 1;
+}
+.page-premium .footer__inner {
+  text-shadow: 0 0 30px rgba(79, 119, 255, 0.12),
+               0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: text-shadow 0.25s ease;
+}
+.page-premium .footer__top:hover {
+  text-shadow: 0 0 20px rgba(79, 119, 255, 0.25);
+}
+[data-theme="light"] .page-premium .footer__inner {
+  text-shadow: 0 0 24px rgba(79, 119, 255, 0.08),
+               0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+/* Контакты — левая акцентная полоска (как у скиллов) */
+.page-premium .contact__links .contact__link {
+  position: relative;
+  padding-left: 20px;
+  box-shadow: inset 3px 0 0 rgba(79, 119, 255, 0.35),
+              0 4px 20px rgba(0, 0, 0, 0.12);
+  border-color: rgba(79, 119, 255, 0.15);
+}
+.page-premium .contact__links .contact__link:hover {
+  box-shadow: inset 3px 0 0 var(--brand),
+              0 16px 40px rgba(0, 0, 0, 0.15),
+              0 0 0 1px rgba(79, 119, 255, 0.15);
+}
+[data-theme="light"] .page-premium .contact__links .contact__link {
+  box-shadow: inset 3px 0 0 rgba(79, 119, 255, 0.25),
+              0 4px 20px rgba(0, 0, 0, 0.05);
+}
+[data-theme="light"] .page-premium .contact__links .contact__link:hover {
+  box-shadow: inset 3px 0 0 var(--brand),
+              0 16px 40px rgba(0, 0, 0, 0.06),
+              0 0 0 1px rgba(79, 119, 255, 0.2);
+}
+
+/* Pills в hero — обводка и тень в покое */
+.page-premium .hero__badge .pill {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.12),
+              0 2px 10px rgba(0, 0, 0, 0.2);
+}
+[data-theme="light"] .page-premium .hero__badge .pill {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.1),
+              0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Кнопка «Наверх» — мягкое свечение в покое */
+.page-premium .back-to-top.back-to-top--visible {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.15),
+              0 4px 20px rgba(0, 0, 0, 0.25),
+              0 0 24px rgba(79, 119, 255, 0.12);
+}
+[data-theme="light"] .page-premium .back-to-top.back-to-top--visible {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.2),
+              0 4px 20px rgba(0, 0, 0, 0.08),
+              0 0 20px rgba(79, 119, 255, 0.1);
+}
+
+/* Навигация — активный пункт с пилюлей и подсветкой */
+.page-premium .nav__link--current {
+  border-radius: 999px;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.35),
+              0 0 20px rgba(79, 119, 255, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: box-shadow 0.25s ease, background 0.2s ease, color 0.2s ease;
+}
+[data-theme="light"] .page-premium .nav__link--current {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.3),
+              0 0 16px rgba(79, 119, 255, 0.15);
+}
+
+/* Фокус для клавиатуры (Tab) — аккуратное кольцо */
+.page-premium .btn:focus-visible,
+.page-premium .nav__link:focus-visible,
+.page-premium .contact__link:focus-visible,
+.page-premium .theme-toggle:focus-visible,
+.page-premium .back-to-top:focus-visible,
+.page-premium a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand), 0 0 20px rgba(79, 119, 255, 0.3);
+}
+[data-theme="light"] .page-premium .btn:focus-visible,
+[data-theme="light"] .page-premium .nav__link:focus-visible,
+[data-theme="light"] .page-premium .contact__link:focus-visible,
+[data-theme="light"] .page-premium .theme-toggle:focus-visible,
+[data-theme="light"] .page-premium .back-to-top:focus-visible,
+[data-theme="light"] .page-premium a:focus-visible {
+  box-shadow: 0 0 0 2px var(--bg2), 0 0 0 4px var(--brand), 0 0 16px rgba(79, 119, 255, 0.25);
+}
+
+/* Мета-теги в карточках проектов — фон и рамка */
+.page-premium .card .meta__item {
+  border: 1px solid rgba(79, 119, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.page-premium .card .meta__item:hover {
+  border-color: rgba(79, 119, 255, 0.35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
+              0 0 12px rgba(79, 119, 255, 0.1);
+}
+[data-theme="light"] .page-premium .card .meta__item {
+  border-color: rgba(79, 119, 255, 0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .page-premium .card .meta__item:hover {
+  border-color: rgba(79, 119, 255, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06),
+              0 0 12px rgba(79, 119, 255, 0.12);
+}
+
+/* Полоса прогресса скролла — скруглённые концы и свечение */
+.page-premium .scrollProgress {
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 20px rgba(79, 119, 255, 0.5),
+              0 0 40px rgba(79, 119, 255, 0.2);
+}
+[data-theme="light"] .page-premium .scrollProgress {
+  box-shadow: 0 0 16px rgba(79, 119, 255, 0.4),
+              0 0 32px rgba(139, 92, 246, 0.15);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Дополнительные улучшения
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Логотип в шапке — свечение при hover */
+.page-premium .brand__logo {
+  transition: box-shadow 0.3s ease, border-color 0.25s ease;
+}
+.page-premium .brand:hover .brand__logo {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.3),
+              0 8px 28px rgba(79, 119, 255, 0.25),
+              0 0 32px rgba(79, 119, 255, 0.15);
+}
+
+/* Ссылка «Перейти к контенту» — при фокусе премиум-вид */
+.page-premium .skip:focus {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand),
+              0 4px 20px rgba(79, 119, 255, 0.2);
+  border-color: rgba(79, 119, 255, 0.4);
+}
+
+/* Подсказки секций — левая полоска и лёгкое свечение текста */
+.page-premium .section__hint {
+  position: relative;
+  padding-left: 14px;
+  border-left: 3px solid rgba(79, 119, 255, 0.35);
+  text-shadow: 0 0 20px rgba(79, 119, 255, 0.08);
+  transition: border-left-color 0.25s ease;
+}
+.page-premium .section__hint:hover {
+  border-left-color: rgba(79, 119, 255, 0.5);
+}
+[data-theme="light"] .page-premium .section__hint {
+  border-left-color: rgba(79, 119, 255, 0.4);
+}
+[data-theme="light"] .page-premium .section__hint:hover {
+  border-left-color: rgba(79, 119, 255, 0.55);
+}
+
+/* Кнопка «Копировать» в контактах */
+.page-premium .contact__copy {
+  border: 1px solid rgba(79, 119, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: box-shadow 0.25s ease, border-color 0.2s ease;
+}
+.page-premium .contact__copy:hover {
+  border-color: rgba(79, 119, 255, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15),
+              0 0 16px rgba(79, 119, 255, 0.12);
+}
+[data-theme="light"] .page-premium .contact__copy {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .page-premium .contact__copy:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08),
+              0 0 12px rgba(79, 119, 255, 0.15);
+}
+
+/* Выделение текста — чуть ярче в премиуме */
+.page-premium ::selection {
+  background: rgba(79, 119, 255, 0.4);
+  color: var(--text);
+}
+[data-theme="light"] .page-premium ::selection {
+  background: rgba(79, 119, 255, 0.32);
+}
+
+/* Маркеры списка «Сильные стороны» — усиленное свечение */
+.page-premium .hero__card .bullets li::before {
+  box-shadow: 0 0 12px rgba(79, 119, 255, 0.5),
+              0 0 24px rgba(79, 119, 255, 0.2);
+}
+[data-theme="light"] .page-premium .hero__card .bullets li::before {
+  box-shadow: 0 0 10px rgba(79, 119, 255, 0.4),
+              0 0 20px rgba(79, 119, 255, 0.15);
+}
+
+/* Шапка при скролле — чуть глубже тень */
+.page-premium .header.header--scrolled {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2),
+              0 1px 0 rgba(255, 255, 255, 0.03);
+}
+[data-theme="light"] .page-premium .header.header--scrolled {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08),
+              0 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* Скроллбар — тонкая полоса в стиле бренда (WebKit) */
+.page-premium::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.page-premium::-webkit-scrollbar-track {
+  background: var(--bg2);
+}
+.page-premium::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(79, 119, 255, 0.5), rgba(139, 92, 246, 0.4));
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+.page-premium::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(79, 119, 255, 0.7), rgba(139, 92, 246, 0.6));
+}
+html[data-theme="light"] .page-premium::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(79, 119, 255, 0.45), rgba(139, 92, 246, 0.35));
+}
+html[data-theme="light"] .page-premium::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(79, 119, 255, 0.65), rgba(139, 92, 246, 0.5));
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Ещё улучшения: лид, бургер, мобильное меню, тост, типографика
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Лид-абзацы секций — левая полоска и читаемость */
+.page-premium .section__lead {
+  position: relative;
+  padding-left: 16px;
+  border-left: 3px solid rgba(79, 119, 255, 0.25);
+  text-shadow: 0 0 24px rgba(79, 119, 255, 0.06),
+               0 1px 2px rgba(0, 0, 0, 0.08);
+  transition: border-left-color 0.3s ease, text-shadow 0.25s ease;
+}
+[data-theme="light"] .page-premium .section__lead {
+  border-left-color: rgba(79, 119, 255, 0.3);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
+}
+
+/* Иконка рядом с заголовком секции — лёгкое свечение */
+.page-premium .section__title-icon {
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(79, 119, 255, 0.3));
+  transition: filter 0.3s ease;
+}
+.page-premium .section__title-wrap:hover .section__title-icon {
+  filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(79, 119, 255, 0.5)) drop-shadow(0 0 24px rgba(79, 119, 255, 0.2));
+}
+[data-theme="light"] .page-premium .section__title-icon {
+  filter: brightness(0) drop-shadow(0 0 6px rgba(79, 119, 255, 0.25));
+}
+[data-theme="light"] .page-premium .section__title-wrap:hover .section__title-icon {
+  filter: brightness(0) drop-shadow(0 0 10px rgba(79, 119, 255, 0.4)) drop-shadow(0 0 20px rgba(79, 119, 255, 0.15));
+}
+
+/* Кнопка бургер-меню — обводка и свечение при hover/focus */
+.page-premium .burger {
+  border-radius: 12px;
+  transition: box-shadow 0.25s ease, border-color 0.2s ease;
+}
+.page-premium .burger:hover {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.2),
+              0 4px 16px rgba(79, 119, 255, 0.12);
+}
+.page-premium .burger.open {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.25),
+              0 4px 20px rgba(79, 119, 255, 0.15);
+}
+
+/* Мобильное меню — ссылки с акцентом при открытии */
+.page-premium .mobile.open .mobile__link {
+  border-radius: 12px;
+  transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+.page-premium .mobile.open .mobile__link:hover,
+.page-premium .mobile.open .mobile__link--current {
+  background: rgba(79, 119, 255, 0.12);
+  box-shadow: inset 3px 0 0 var(--brand);
+}
+[data-theme="light"] .page-premium .mobile.open .mobile__link:hover,
+[data-theme="light"] .page-premium .mobile.open .mobile__link--current {
+  background: rgba(79, 119, 255, 0.08);
+  box-shadow: inset 3px 0 0 var(--brand);
+}
+
+/* Ссылка «Наверх» в футере — плавное подчёркивание */
+.page-premium .footer__top {
+  transition: border-bottom-color 0.25s ease, color 0.2s ease, text-shadow 0.2s ease;
+}
+
+/* Toast (уведомление) — премиум-обводка и свечение */
+.page-premium .toast {
+  border: 1px solid rgba(79, 119, 255, 0.3);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05),
+              0 8px 32px rgba(0, 0, 0, 0.4),
+              0 0 40px rgba(79, 119, 255, 0.15);
+}
+.page-premium .toast.show {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.35),
+              0 8px 32px rgba(0, 0, 0, 0.4),
+              0 0 48px rgba(79, 119, 255, 0.2);
+}
+[data-theme="light"] .page-premium .toast {
+  border-color: rgba(79, 119, 255, 0.25);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5),
+              0 8px 32px rgba(0, 0, 0, 0.15),
+              0 0 32px rgba(79, 119, 255, 0.1);
+}
+
+/* Текст в карточках — лёгкая тень для читаемости */
+.page-premium .card__text {
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.05),
+               0 1px 1px rgba(0, 0, 0, 0.04);
+  transition: text-shadow 0.25s ease;
+}
+[data-theme="light"] .page-premium .card__text {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.02);
+}
+
+/* Заголовки групп навыков — лёгкое свечение */
+.page-premium .skillgroup__title {
+  text-shadow: 0 0 16px rgba(79, 119, 255, 0.15),
+               0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: text-shadow 0.25s ease;
+}
+[data-theme="light"] .page-premium .skillgroup__title {
+  text-shadow: 0 0 12px rgba(79, 119, 255, 0.1),
+               0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+/* Внешние ссылки — иконка с плавным появлением */
+.page-premium a.link--external::after {
+  transition: opacity 0.25s ease, transform 0.2s ease;
+}
+.page-premium a.link--external:hover::after {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Ещё: кнопка в шапке, контакт-карточка, CTA hero, reduced motion
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Кнопка «Скачать резюме» в шапке — лёгкое свечение в покое, плавный hover */
+.page-premium .header .btn--primary {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+              0 4px 20px rgba(79, 119, 255, 0.3),
+              0 0 24px rgba(79, 119, 255, 0.12);
+  transition: box-shadow 0.3s ease, transform 0.25s ease;
+}
+.page-premium .header .btn--primary:hover {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15),
+              0 8px 28px rgba(79, 119, 255, 0.4),
+              0 0 36px rgba(79, 119, 255, 0.2);
+}
+[data-theme="light"] .page-premium .header .btn--primary {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3),
+              0 4px 20px rgba(79, 119, 255, 0.25),
+              0 0 20px rgba(79, 119, 255, 0.08);
+}
+
+/* Контакт-карточка (блок справа в Контактах) — левая акцентная полоска */
+.page-premium .contact__card {
+  padding-left: 20px;
+  box-shadow: inset 3px 0 0 rgba(79, 119, 255, 0.3),
+              0 12px 40px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(79, 119, 255, 0.08);
+}
+[data-theme="light"] .page-premium .contact__card {
+  box-shadow: inset 3px 0 0 rgba(79, 119, 255, 0.25),
+              0 12px 40px rgba(0, 0, 0, 0.08),
+              0 0 0 1px rgba(79, 119, 255, 0.1);
+}
+/* Секция Контакты: при наведении на блок — карточка «Быстрое действие» чуть подсвечивается */
+.page-premium #contacts .contact:hover .contact__card {
+  box-shadow: inset 3px 0 0 rgba(79, 119, 255, 0.4),
+              0 0 36px rgba(79, 119, 255, 0.1),
+              0 14px 44px rgba(0, 0, 0, 0.28),
+              0 0 0 1px rgba(79, 119, 255, 0.12);
+}
+[data-theme="light"] .page-premium #contacts .contact:hover .contact__card {
+  box-shadow: inset 3px 0 0 rgba(79, 119, 255, 0.35),
+              0 0 28px rgba(79, 119, 255, 0.08),
+              0 14px 44px rgba(0, 0, 0, 0.06),
+              0 0 0 1px rgba(79, 119, 255, 0.15);
+}
+
+/* Блок CTA в hero (Смотреть проекты + Связаться) — акцент снизу */
+.page-premium .hero__cta {
+  position: relative;
+  padding-bottom: 8px;
+}
+.page-premium .hero__cta::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79, 119, 255, 0.25), rgba(139, 92, 246, 0.2), transparent);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+.page-premium .hero__cta:hover::after {
+  opacity: 1;
+}
+
+/* Заголовки карточек (все) — единое лёгкое свечение */
+.page-premium .card .card__title {
+  text-shadow: 0 0 18px rgba(79, 119, 255, 0.12),
+               0 1px 2px rgba(0, 0, 0, 0.08);
+  transition: text-shadow 0.25s ease;
+}
+[data-theme="light"] .page-premium .card .card__title {
+  text-shadow: 0 0 14px rgba(79, 119, 255, 0.08),
+               0 1px 1px rgba(0, 0, 0, 0.03);
+}
+
+/* Кнопка «Наверх» — стрелка чётче */
+.page-premium .back-to-top {
+  text-shadow: 0 0 12px rgba(79, 119, 255, 0.3),
+               0 1px 2px rgba(0, 0, 0, 0.2);
+}
+[data-theme="light"] .page-premium .back-to-top {
+  text-shadow: 0 0 10px rgba(79, 119, 255, 0.2),
+               0 1px 1px rgba(0, 0, 0, 0.06);
+}
+
+/* Шапка секции (строка с заголовком и подсказкой) — тонкая нижняя граница */
+.page-premium .section__head {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(79, 119, 255, 0.08);
+  margin-bottom: 16px;
+  transition: border-bottom-color 0.25s ease;
+}
+[data-theme="light"] .page-premium .section__head {
+  border-bottom-color: rgba(79, 119, 255, 0.1);
+}
+
+/* Фокус для пунктов мобильного меню */
+.page-premium .mobile__link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand), 0 0 16px rgba(79, 119, 255, 0.25);
+}
+
+/* Уважение к «Уменьшить движение» — отключаем моргание кнопки темы */
+@media (prefers-reduced-motion: reduce) {
+  .page-premium .theme-toggle {
+    animation: none;
+    box-shadow: 0 0 0 1px var(--line), 0 0 12px rgba(79, 119, 255, 0.15);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Плавная смена темы, иконки контактов, активные кнопки, печать
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Плавное переключение темы для премиум-элементов */
+html.theme-transition .page-premium .card,
+html.theme-transition .page-premium .skillgroup,
+html.theme-transition .page-premium .hero__card,
+html.theme-transition .page-premium .contact__card,
+html.theme-transition .page-premium .contact__link,
+html.theme-transition .page-premium .quick,
+html.theme-transition .page-premium .nav__link,
+html.theme-transition .page-premium .btn,
+html.theme-transition .page-premium .avatar,
+html.theme-transition .page-premium .back-to-top,
+html.theme-transition .page-premium .meta__item,
+html.theme-transition .page-premium .pill {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease,
+              box-shadow 0.35s ease, background 0.35s ease;
+}
+
+/* Иконки в контактах (Email, Telegram, Город) — лёгкое свечение */
+.page-premium .contact__link .contact__k::before {
+  filter: drop-shadow(0 0 4px rgba(79, 119, 255, 0.25));
+  transition: filter 0.25s ease;
+}
+[data-theme="light"] .page-premium .contact__link .contact__k::before {
+  filter: drop-shadow(0 0 3px rgba(79, 119, 255, 0.2));
+}
+
+/* Кнопки — отзывчивое нажатие (:active) */
+.page-premium .btn:active {
+  transform: scale(0.98);
+}
+.page-premium .btn--primary:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* Текст в футере — лёгкий акцент, при hover футера чуть ярче */
+.page-premium .footer__left,
+.page-premium .footer__right {
+  transition: opacity 0.25s ease;
+  opacity: 0.92;
+}
+.page-premium .footer__right {
+  letter-spacing: 0.02em;
+}
+.page-premium .footer__inner:hover .footer__left,
+.page-premium .footer__inner:hover .footer__right {
+  opacity: 1;
+}
+
+/* Ссылки внутри контента — плавная смена цвета */
+.page-premium .section__lead a,
+.page-premium .card__text a,
+.page-premium .contact__card a {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Печать — упрощённые тени, без свечения */
+@media print {
+  .page-premium .card,
+  .page-premium .skillgroup,
+  .page-premium .hero__card,
+  .page-premium .contact__card,
+  .page-premium .contact__link,
+  .page-premium .quick,
+  .page-premium .card--project {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+  .page-premium .section__title,
+  .page-premium .card__title,
+  .page-premium .hero__card-title {
+    text-shadow: none;
+  }
+  .page-premium .footer__inner {
+    text-shadow: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Ещё: бургер фокус, заголовок контакта, strong, разделитель с точкой
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Фокус для кнопки бургер-меню */
+.page-premium .burger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand), 0 0 20px rgba(79, 119, 255, 0.3);
+}
+
+/* Заголовок контакт-карточки — лёгкое свечение */
+.page-premium .contact__card-title {
+  text-shadow: 0 0 20px rgba(79, 119, 255, 0.2),
+               0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: text-shadow 0.25s ease;
+}
+[data-theme="light"] .page-premium .contact__card-title {
+  text-shadow: 0 0 16px rgba(79, 119, 255, 0.12),
+               0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+/* Выделенный текст (strong, b) — лёгкий акцент */
+.page-premium strong,
+.page-premium b {
+  font-weight: 800;
+  color: var(--text);
+  text-shadow: 0 0 12px rgba(79, 119, 255, 0.08);
+  transition: text-shadow 0.25s ease, color 0.2s ease;
+}
+[data-theme="light"] .page-premium strong,
+[data-theme="light"] .page-premium b {
+  text-shadow: 0 0 10px rgba(79, 119, 255, 0.06);
+}
+
+/* Разделитель секций — точка по центру линии */
+.page-premium .section + .section::before {
+  background: linear-gradient(90deg, transparent 0%, rgba(79, 119, 255, 0.35) 45%, rgba(139, 92, 246, 0.3) 55%, transparent 100%),
+              radial-gradient(circle at 50% 50%, rgba(79, 119, 255, 0.7) 0%, transparent 5px);
+  background-size: 100% 100%, 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Ещё: фокус бренда/копировать, logoMeta, skip transition
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Логотип «Наверх» — фокус для клавиатурной навигации */
+.page-premium .brand:focus-visible {
+  outline: none;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand), 0 0 20px rgba(79, 119, 255, 0.25);
+}
+
+/* Кнопка «Копировать» — фокус */
+.page-premium .contact__copy:focus-visible {
+  outline: none;
+  border-color: rgba(79, 119, 255, 0.5);
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand), 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+[data-theme="light"] .page-premium .contact__copy:focus-visible {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand), 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Мета-подпись у лого (AWS: EC2/ECS/…) — читаемость и акцент */
+.page-premium .logoMeta {
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 12px rgba(79, 119, 255, 0.06);
+  transition: text-shadow 0.25s ease, color 0.2s ease;
+}
+[data-theme="light"] .page-premium .logoMeta {
+  text-shadow: 0 0 10px rgba(79, 119, 255, 0.05);
+}
+
+/* Skip-ссылка — плавное появление кольца при фокусе */
+.page-premium .skip {
+  transition: box-shadow 0.25s ease, border-color 0.2s ease;
+}
+
+/* Текст в контакт-карточке «Быстрое действие» — в тон остальному контенту */
+.page-premium .contact__card-text {
+  text-shadow: 0 0 14px rgba(79, 119, 255, 0.06);
+  transition: text-shadow 0.25s ease;
+}
+[data-theme="light"] .page-premium .contact__card-text {
+  text-shadow: 0 0 10px rgba(79, 119, 255, 0.04);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Микровзаимодействия: pills, логотипы скиллов, карточки проектов, футер
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Pills в hero — лёгкое увеличение при наведении */
+.page-premium .hero__badge .pill {
+  transform: scale(1);
+  transition: transform 0.25s ease, box-shadow 0.3s ease, border-color 0.25s ease;
+}
+.page-premium .hero__badge .pill:hover {
+  transform: scale(1.02);
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-premium .hero__badge .pill:hover {
+    transform: none;
+  }
+}
+
+/* Скиллы (логотипы) — при наведении иконка чуть выделяется */
+.page-premium .skillgrid .logo .logoImg {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), filter 0.25s ease;
+}
+.page-premium .skillgrid .logo:hover .logoImg {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 8px rgba(79, 119, 255, 0.35));
+}
+[data-theme="light"] .page-premium .skillgrid .logo:hover .logoImg {
+  filter: drop-shadow(0 0 6px rgba(79, 119, 255, 0.3));
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-premium .skillgrid .logo:hover .logoImg {
+    transform: none;
+  }
+}
+
+/* Карточка проекта — логотип компании чуть «оживает» при hover карточки */
+.page-premium .card--project .card__project-logo-img {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.page-premium .card--project:hover .card__project-logo-img {
+  transform: scale(1.04);
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-premium .card--project:hover .card__project-logo-img {
+    transform: none;
+  }
+}
+
+/* Блоки Фокус/Город/Контакты — лёгкий подъём при наведении */
+.page-premium .hero__quick .quick {
+  transition: box-shadow 0.3s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.page-premium .hero__quick .quick:hover {
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-premium .hero__quick .quick:hover {
+    transform: none;
+  }
+}
+
+/* Ссылка «Наверх» в футере — фокус для клавиатуры */
+.page-premium .footer__top:focus-visible {
+  outline: none;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand), 0 0 14px rgba(79, 119, 255, 0.2);
+}
+[data-theme="light"] .page-premium .footer__top:focus-visible {
+  box-shadow: 0 0 0 2px var(--bg2), 0 0 0 4px var(--brand), 0 0 12px rgba(79, 119, 255, 0.25);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Ещё: секция Опыт, подпись скиллов, лид, пункты списка, кнопки, карточки
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Секция «Опыт и подход» — у заголовка нижняя граница как у section__head */
+.page-premium #experience .section__title {
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(79, 119, 255, 0.12);
+  transition: border-bottom-color 0.25s ease;
+}
+[data-theme="light"] .page-premium #experience .section__title {
+  border-bottom-color: rgba(79, 119, 255, 0.15);
+}
+
+/* Подпись под иконкой скилла — при hover блока чуть ярче */
+.page-premium .skillgrid .logo .logoLabel {
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+.page-premium .skillgrid .logo:hover .logoLabel {
+  color: var(--text);
+  text-shadow: 0 0 12px rgba(79, 119, 255, 0.15);
+}
+[data-theme="light"] .page-premium .skillgrid .logo:hover .logoLabel {
+  text-shadow: 0 0 10px rgba(79, 119, 255, 0.12);
+}
+
+/* Лид-абзац — при наведении полоска ярче */
+.page-premium .section__lead {
+  transition: border-left-color 0.3s ease, text-shadow 0.25s ease;
+}
+.page-premium .section__lead:hover {
+  border-left-color: rgba(79, 119, 255, 0.45);
+}
+[data-theme="light"] .page-premium .section__lead:hover {
+  border-left-color: rgba(79, 119, 255, 0.5);
+}
+
+/* Пункты списка «Сильные стороны» — отступ от точки, без выделения при наведении */
+.page-premium .hero__card .bullets li {
+  padding-left: 32px;
+  user-select: none;
+}
+.page-premium .hero__card .bullets li::before {
+  left: 0;
+}
+
+/* Primary-кнопки — лёгкое увеличение при наведении */
+.page-premium .btn--primary {
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+}
+.page-premium .btn--primary:hover {
+  transform: scale(1.02);
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-premium .btn--primary:hover {
+    transform: none;
+  }
+}
+
+/* Карточки — при фокусе внутри (клавиатура) видимое кольцо */
+.page-premium .card:focus-within {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.35),
+              0 16px 48px rgba(0, 0, 0, 0.35),
+              0 0 48px rgba(79, 119, 255, 0.12);
+  outline: none;
+}
+.page-premium .card--project:focus-within {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.35),
+              0 20px 56px rgba(0, 0, 0, 0.3),
+              0 0 56px rgba(79, 119, 255, 0.1);
+}
+[data-theme="light"] .page-premium .card:focus-within,
+[data-theme="light"] .page-premium .card--project:focus-within {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.4),
+              0 20px 56px rgba(0, 0, 0, 0.08),
+              0 0 40px rgba(79, 119, 255, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Плавный тост, полоса прокрутки, мобильная CTA, подзаголовок hero
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Toast — плавное появление тени и обводки при .show */
+.page-premium .toast {
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease, border-color 0.25s ease;
+}
+
+/* Полоса прокрутки — плавное изменение ширины */
+.page-premium .scrollProgress {
+  transition: width 0.15s ease-out, box-shadow 0.25s ease;
+}
+
+/* Кнопка «Скачать резюме» в мобильном меню — в тон шапке */
+.page-premium .mobile__cta .btn--primary {
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+}
+.page-premium .mobile__cta .btn--primary:hover {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.35),
+              0 8px 28px rgba(79, 119, 255, 0.3),
+              0 0 32px rgba(79, 119, 255, 0.15);
+  transform: scale(1.02);
+}
+.page-premium .mobile__cta .btn--primary:active {
+  transform: scale(0.98);
+}
+[data-theme="light"] .page-premium .mobile__cta .btn--primary:hover {
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.3),
+              0 8px 28px rgba(79, 119, 255, 0.25),
+              0 0 28px rgba(79, 119, 255, 0.12);
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-premium .mobile__cta .btn--primary:hover {
+    transform: none;
+  }
+}
+
+/* Подзаголовок hero — чуть свободнее по строкам */
+.page-premium .hero__subtitle {
+  line-height: 1.65;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Фокус кнопки в контакт-карточке, иконки в карточках, CTA hero
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Кнопка «Скачать резюме» внутри контакт-карточки — фокус для клавиатуры */
+.page-premium .contact__card .btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand), 0 0 20px rgba(79, 119, 255, 0.25);
+}
+[data-theme="light"] .page-premium .contact__card .btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--bg2), 0 0 0 4px var(--brand), 0 0 16px rgba(79, 119, 255, 0.3);
+}
+
+/* Иконки в заголовках карточек — плавное изменение при hover/теме */
+.page-premium .card .card__topic-icon,
+.page-premium #experience .card__topic-icon {
+  transition: filter 0.25s ease;
+}
+
+/* Блок CTA в hero — плавный отступ и контраст ссылок */
+.page-premium .hero__cta {
+  transition: gap 0.2s ease;
+}
+.page-premium .hero__cta .btn {
+  transition: transform 0.25s ease, box-shadow 0.3s ease, opacity 0.2s ease;
+}
+
+/* Ссылки в блоке Фокус/Город/Контакты — плавная смена цвета */
+.page-premium .hero__quick a {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Секции — отступ при скролле к якорю (фиксированная шапка) */
+.page-premium .section {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Кнопка в шапке — фокус для клавиатуры */
+.page-premium .header .btn--primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand), 0 8px 28px rgba(79, 119, 255, 0.35), 0 0 36px rgba(79, 119, 255, 0.2);
+}
+[data-theme="light"] .page-premium .header .btn--primary:focus-visible {
+  box-shadow: 0 0 0 2px var(--bg2), 0 0 0 4px var(--brand), 0 8px 28px rgba(79, 119, 255, 0.3), 0 0 28px rgba(79, 119, 255, 0.12);
+}
+
+/* Уменьшение движения — без подъёма/сдвига при hover */
+@media (prefers-reduced-motion: reduce) {
+  .page-premium .contact__card:hover {
+    transform: none;
+  }
+  .page-premium .card:hover {
+    transform: none;
+  }
+  .page-premium .hero__cta .btn--primary:hover {
+    transform: none;
+  }
+  .page-premium .back-to-top:hover {
+    transform: none;
+  }
+  .page-premium .brand:hover {
+    transform: none;
+  }
+}
