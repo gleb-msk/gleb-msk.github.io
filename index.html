@@ -23,53 +23,50 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="styles.css?v=21" rel="stylesheet">
+<script src="i18n.js?v=1"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Глеб Москалёв","jobTitle":"DevOps Engineer","description":"Эксплуатация и развитие production/stage инфраструктуры: Docker/Compose, GitLab CI/CD, Nginx/TLS, мониторинг.","email":"mailto:gleb.moskalov@mail.ru","sameAs":["https://t.me/nevnature"]}
 </script>
 </head>
 <body class="page-load page-premium">
   <div id="scrollProgress" class="scrollProgress" aria-hidden="true"></div>
-<a class="skip" href="#about">Перейти к контенту</a>
+<a class="skip" href="#about" data-i18n="skip">Перейти к контенту</a>
 <header class="header" id="top">
 <div class="container header__inner">
-<a aria-label="Наверх" class="brand" href="#top">
+<a class="brand" href="#top" data-i18n-aria="brandAria">
 <span class="brand__logo">&lt;GM /&gt;</span>
 </a>
 <nav aria-label="Навигация" class="nav">
-<a class="nav__link" href="#about">Обо мне</a>
-<a class="nav__link" href="#skills">Навыки</a>
-<a class="nav__link" href="#projects">Проекты</a>
-<a class="nav__link" href="#experience">Опыт</a>
-<a class="nav__link" href="#contacts">Контакты</a>
+<a class="nav__link" href="#about" data-i18n="navAbout">Обо мне</a>
+<a class="nav__link" href="#skills" data-i18n="navSkills">Навыки</a>
+<a class="nav__link" href="#projects" data-i18n="navProjects">Проекты</a>
+<a class="nav__link" href="#experience" data-i18n="navExperience">Опыт</a>
+<a class="nav__link" href="#contacts" data-i18n="navContacts">Контакты</a>
 </nav>
 <div class="header__actions">
-<button aria-label="Переключить тему: светлая/тёмная" class="theme-toggle" id="themeToggle" type="button">
+<button type="button" class="theme-toggle" id="themeToggle" data-i18n-aria="ariaTheme">
   <span class="theme-toggle__track">
     <span class="theme-toggle__thumb"></span>
   </span>
   <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">🌙</span>
   <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀️</span>
 </button>
-<!-- НИКАКИХ фиксированных оверлеев: это обычная кнопка-ссылка -->
-<a class="btn btn--primary" download="Gleb_Moskalev_CV.pdf" href="cv.pdf" id="cvDownload">
-          Скачать резюме
-        </a>
-<button aria-label="Открыть меню" class="burger" id="burger" type="button">
+<button type="button" class="lang-toggle" id="langToggle" aria-label="English" title="English">EN</button>
+<a class="btn btn--primary" download="Gleb_Moskalev_CV.pdf" href="cv.pdf" id="cvDownload" data-i18n="btnCv">Скачать резюме</a>
+<button type="button" class="burger" id="burger" data-i18n-aria="ariaBurger">
 <span></span><span></span><span></span>
 </button>
 </div>
 </div>
 <div aria-hidden="true" class="mobile" id="mobileMenu">
 <div class="mobile__inner">
-<a class="mobile__link" href="#about">Обо мне</a>
-<a class="mobile__link" href="#skills">Навыки</a>
-<a class="mobile__link" href="#projects">Проекты</a>
-<a class="mobile__link" href="#experience">Опыт</a>
-<a class="mobile__link" href="#contacts">Контакты</a>
+<a class="mobile__link" href="#about" data-i18n="navAbout">Обо мне</a>
+<a class="mobile__link" href="#skills" data-i18n="navSkills">Навыки</a>
+<a class="mobile__link" href="#projects" data-i18n="navProjects">Проекты</a>
+<a class="mobile__link" href="#experience" data-i18n="navExperience">Опыт</a>
+<a class="mobile__link" href="#contacts" data-i18n="navContacts">Контакты</a>
 <div class="mobile__cta">
-<a class="btn btn--primary btn--full" download="Gleb_Moskalev_CV.pdf" href="cv.pdf">
-            Скачать резюме
-          </a>
+<a class="btn btn--primary btn--full" download="Gleb_Moskalev_CV.pdf" href="cv.pdf" data-i18n="btnCv">Скачать резюме</a>
 </div>
 </div>
 </div>
@@ -80,51 +77,46 @@
 <div class="container hero__grid">
 <div class="hero__left">
 <div class="hero__badge">
-<span class="pill">DevOps Engineer</span>
-<span class="pill pill--muted">2+ года коммерческого опыта</span>
-<span class="pill pill--muted">Удалённо</span>
+<span class="pill" data-i18n="heroPill1">DevOps Engineer</span>
+<span class="pill pill--muted" data-i18n="heroPill2">2+ года коммерческого опыта</span>
+<span class="pill pill--muted" data-i18n="heroPill3">Удалённо</span>
 </div>
-<h1 class="hero__title">
-            Глеб Москалёв
-          </h1>
-<p class="hero__subtitle">
-            Эксплуатация и развитие production/stage инфраструктуры: Docker/Compose, GitLab CI/CD,
-            Nginx/TLS, DNS/Proxy, Postgres/Redis, мониторинг и инциденты.
-          </p>
+<h1 class="hero__title" data-i18n="heroTitle">Глеб Москалёв</h1>
+<p class="hero__subtitle" data-i18n="heroSubtitle">Эксплуатация и развитие production/stage инфраструктуры: Docker/Compose, GitLab CI/CD, Nginx/TLS, DNS/Proxy, Postgres/Redis, мониторинг и инциденты.</p>
 <div class="hero__quick">
 <div class="quick">
-<div class="quick__k">Фокус</div>
-<div class="quick__v">стабильные релизы, воспроизводимость, self‑healing, rollback/backup</div>
+<div class="quick__k" data-i18n="heroQuickFocus">Фокус</div>
+<div class="quick__v" data-i18n="heroQuickFocusVal">стабильные релизы, воспроизводимость, self‑healing, rollback/backup</div>
 </div>
 <div class="quick">
-<div class="quick__k">Город</div>
-<div class="quick__v">Краснодар</div>
+<div class="quick__k" data-i18n="heroQuickCity">Город</div>
+<div class="quick__v" data-i18n="heroQuickCityVal">Краснодар</div>
 </div>
 <div class="quick">
-<div class="quick__k">Контакты</div>
+<div class="quick__k" data-i18n="heroQuickContacts">Контакты</div>
 <div class="quick__v quick__v--contacts">
 <a href="mailto:gleb.moskalov@mail.ru">gleb.moskalov@mail.ru</a>
-<a class="quick__icon" href="https://t.me/nevnature" rel="noopener noreferrer" target="_blank" title="Открыть в Telegram" aria-label="Telegram: @nevnature"><span class="quick__icon-label">TELEGRAM</span>
+<a class="quick__icon" href="https://t.me/nevnature" rel="noopener noreferrer" target="_blank" data-i18n-title="contactTelegramTitle"><span class="quick__icon-label">TELEGRAM</span>
 <img src="assets/icon-telegram.svg" alt="" width="24" height="24" aria-hidden="true"/>
 </a>
 </div>
 </div>
 </div>
 <div class="hero__cta">
-<a class="btn btn--primary" href="#projects">Смотреть проекты</a>
-<a class="btn btn--ghost" href="#contacts"><span class="btn__text">Связаться</span><span class="btn__arrow" aria-hidden="true">→</span></a>
+<a class="btn btn--primary" href="#projects" data-i18n="heroCtaProjects">Смотреть проекты</a>
+<a class="btn btn--ghost" href="#contacts"><span class="btn__text" data-i18n="heroCtaContact">Связаться</span><span class="btn__arrow" aria-hidden="true">→</span></a>
 </div>
 </div>
 <div class="hero__right">
 <div class="avatar">
-<img class="avatar__img" alt="Глеб Москалёв" loading="lazy" src="assets/avatar.jpg"/>
+<img class="avatar__img" alt="Gleb Moskalev" loading="lazy" src="assets/avatar.jpg"/>
 </div>
 <div class="hero__card">
-<div class="hero__card-title">Сильные стороны</div>
+<div class="hero__card-title" data-i18n="heroStrengthsTitle">Сильные стороны</div>
 <ul class="bullets reveal-stagger">
-<li>Диагностика 502/504, рестарты контейнеров, алерты/логирование.</li>
-<li>Релизы без простоя: health‑checks, миграции, rollback.</li>
-<li>DNS/edge: Cloudflare/GoDaddy, TLS (Let's Encrypt), reverse‑proxy.</li>
+<li data-i18n="heroStrengths1">Диагностика 502/504, рестарты контейнеров, алерты/логирование.</li>
+<li data-i18n="heroStrengths2">Релизы без простоя: health‑checks, миграции, rollback.</li>
+<li data-i18n="heroStrengths3">DNS/edge: Cloudflare/GoDaddy, TLS (Let's Encrypt), reverse‑proxy.</li>
 </ul>
 </div>
 </div>
@@ -136,32 +128,23 @@
 <div class="container">
 <div class="section__title-wrap">
 <img src="assets/icon-person.svg" alt="" class="section__title-icon" width="36" height="36" aria-hidden="true"/>
-<h2 class="section__title">Обо мне</h2>
+<h2 class="section__title" data-i18n="sectionAboutTitle">Обо мне</h2>
 </div>
-<p class="section__lead">
-          Middle DevOps-инженер с практическим опытом поддержки и развития веб‑платформ на Linux.
-          Ставлю цель: быстрые, безопасные релизы и стабильная работа сервисов после обновлений.
-        </p>
+<p class="section__lead" data-i18n="sectionAboutLead">Middle DevOps-инженер с практическим опытом поддержки и развития веб‑платформ на Linux. Ставлю цель: быстрые, безопасные релизы и стабильная работа сервисов после обновлений.</p>
 <div class="cards">
 <div class="card">
 <div class="card__topic">
 <img src="assets/icon-hands.svg" alt="" class="card__topic-icon" width="32" height="32" aria-hidden="true"/>
-<span class="card__title">Что делаю руками</span>
+<span class="card__title" data-i18n="aboutCard1Title">Что делаю руками</span>
 </div>
-<p class="card__text">
-              Docker/Compose окружения (frontend/backend/db), Nginx как edge, GitLab CI/CD (build → push → deploy),
-              миграции БД в релизном процессе, backup/restore, мониторинг и разбор инцидентов.
-            </p>
+<p class="card__text" data-i18n="aboutCard1Text">Docker/Compose окружения (frontend/backend/db), Nginx как edge, GitLab CI/CD (build → push → deploy), миграции БД в релизном процессе, backup/restore, мониторинг и разбор инцидентов.</p>
 </div>
 <div class="card">
 <div class="card__topic">
 <img src="assets/icon-laptop.svg" alt="" class="card__topic-icon" width="32" height="32" aria-hidden="true"/>
-<span class="card__title">Как работаю</span>
+<span class="card__title" data-i18n="aboutCard2Title">Как работаю</span>
 </div>
-<p class="card__text">
-              В первую очередь — восстановить доступность (reduce blast radius), затем найти root cause,
-              зафиксировать в документации и добавить защиту (алерты, лимиты, health‑checks, runbooks).
-            </p>
+<p class="card__text" data-i18n="aboutCard2Text">В первую очередь — восстановить доступность (reduce blast radius), затем найти root cause, зафиксировать в документации и добавить защиту (алерты, лимиты, health‑checks, runbooks).</p>
 </div>
 </div>
 </div>
@@ -170,8 +153,8 @@
 <section class="section" id="skills">
 <div class="container">
 <div class="section__head">
-<h2 class="section__title">Навыки</h2>
-<p class="section__hint">Технологии, с которыми работал/работаю (часть — в процессе изучения).</p>
+<h2 class="section__title" data-i18n="sectionSkillsTitle">Навыки</h2>
+<p class="section__hint" data-i18n="sectionSkillsHint">Технологии, с которыми работал/работаю (часть — в процессе изучения).</p>
 </div>
 <div class="skillgrid">
 <div class="skillgroup">
@@ -186,7 +169,7 @@
 <div class="logos">
 <div class="logo" title="Docker"><img class="logoImg" alt="" src="assets/docker.svg" data-fallback="🐳" /><span class="logoLabel">Docker</span></div>
 <div class="logo" title="Docker Compose"><img class="logoImg" alt="" src="assets/docker-compose.svg" data-fallback="DC" /><span class="logoLabel">Docker Compose</span></div>
-<div class="logo" title="Kubernetes (изучаю)"><img class="logoImg" alt="" src="assets/kubernetes.svg" data-fallback="K" /><span class="logoLabel">Kubernetes</span><span class="tag tag--learning">изучаю</span></div>
+<div class="logo" title="Kubernetes (изучаю)"><img class="logoImg" alt="" src="assets/kubernetes.svg" data-fallback="K" /><span class="logoLabel">Kubernetes</span><span class="tag tag--learning" data-i18n="tagLearning">изучаю</span></div>
 </div>
 </div>
 <div class="skillgroup">
@@ -213,7 +196,7 @@
 <div class="logos">
 <div class="logo" title="PostgreSQL"><img class="logoImg" alt="" src="assets/postgresql.svg" data-fallback="PG" /><span class="logoLabel">PostgreSQL</span></div>
 <div class="logo" title="Redis"><img class="logoImg" alt="" src="assets/redis.svg" data-fallback="R" /><span class="logoLabel">Redis</span></div>
-<div class="logo" title="ClickHouse (изучаю)"><img class="logoImg" alt="" src="assets/clickhouse.svg" data-fallback="CH" /><span class="logoLabel">ClickHouse</span><span class="tag tag--learning">изучаю</span></div>
+<div class="logo" title="ClickHouse (изучаю)"><img class="logoImg" alt="" src="assets/clickhouse.svg" data-fallback="CH" /><span class="logoLabel">ClickHouse</span><span class="tag tag--learning" data-i18n="tagLearning">изучаю</span></div>
 </div>
 </div>
 <div class="skillgroup">
@@ -234,8 +217,8 @@
 <div class="skillgroup">
 <div class="skillgroup__title">Infrastructure as Code</div>
 <div class="logos">
-<div class="logo" title="Ansible (изучаю)"><img class="logoImg" alt="" src="assets/ansible.svg" data-fallback="A" /><span class="logoLabel">Ansible</span><span class="tag tag--learning">изучаю</span></div>
-<div class="logo" title="Terraform (изучаю)"><img class="logoImg" alt="" src="assets/terraform.svg" data-fallback="T" /><span class="logoLabel">Terraform</span><span class="tag tag--learning">изучаю</span></div>
+<div class="logo" title="Ansible (изучаю)"><img class="logoImg" alt="" src="assets/ansible.svg" data-fallback="A" /><span class="logoLabel">Ansible</span><span class="tag tag--learning" data-i18n="tagLearning">изучаю</span></div>
+<div class="logo" title="Terraform (изучаю)"><img class="logoImg" alt="" src="assets/terraform.svg" data-fallback="T" /><span class="logoLabel">Terraform</span><span class="tag tag--learning" data-i18n="tagLearning">изучаю</span></div>
 </div>
 </div>
 <div class="skillgroup">
@@ -254,17 +237,14 @@
 <section class="section" id="projects">
 <div class="container">
 <div class="section__head">
-<h2 class="section__title">Проекты</h2>
-<p class="section__hint">2–3 ключевых кейса + инфраструктурные задачи.</p>
+<h2 class="section__title" data-i18n="sectionProjectsTitle">Проекты</h2>
+<p class="section__hint" data-i18n="sectionProjectsHint">2–3 ключевых кейса + инфраструктурные задачи.</p>
 </div>
 <div class="cards cards--projects">
 <article class="card card--project">
 <div class="card__project-logo"><img src="assets/technorely-logo.png" alt="Technorely" class="card__project-logo-img" width="120" height="48"/></div>
-<h3 class="card__title">Technorely — prod/stage и preview окружения</h3>
-<p class="card__text">
-              Docker Compose (frontend/backend/PostgreSQL/Redis), Nginx edge (TLS Let's Encrypt),
-              GitLab CI/CD релизы, миграции БД, rollback и восстановление из дампа, preview стенды для feat/*.
-            </p>
+<h3 class="card__title" data-i18n="project1Title">Technorely — prod/stage и preview окружения</h3>
+<p class="card__text" data-i18n="project1Text">Docker Compose (frontend/backend/PostgreSQL/Redis), Nginx edge (TLS Let's Encrypt), GitLab CI/CD релизы, миграции БД, rollback и восстановление из дампа, preview стенды для feat/*.</p>
 <div class="meta">
 <span class="meta__item">Docker/Compose</span>
 <span class="meta__item">GitLab CI/CD</span>
@@ -274,11 +254,8 @@
 </article>
 <article class="card card--project">
 <div class="card__project-logo"><img src="assets/careclix-logo.png" alt="Careclix" class="card__project-logo-img" width="120" height="48"/></div>
-<h3 class="card__title">Careclix — тестовые окружения и домены</h3>
-<p class="card__text">
-              Изолированные стенды для dev/QA: Docker/Compose на VM, поддомены, reverse‑proxy, SSL по необходимости.
-              Основная платформа компании — GitHub + GCP/Kubernetes (миграцию делала другая команда).
-            </p>
+<h3 class="card__title" data-i18n="project2Title">Careclix — тестовые окружения и домены</h3>
+<p class="card__text" data-i18n="project2Text">Изолированные стенды для dev/QA: Docker/Compose на VM, поддомены, reverse‑proxy, SSL по необходимости. Основная платформа компании — GitHub + GCP/Kubernetes (миграцию делала другая команда).</p>
 <div class="meta">
 <span class="meta__item">Docker/Compose</span>
 <span class="meta__item">Nginx</span>
@@ -288,11 +265,8 @@
 </article>
 <article class="card card--project">
 <div class="card__project-logo"><img src="assets/korporatio-logo.png" alt="Korporatio" class="card__project-logo-img" width="120" height="48"/></div>
-<h3 class="card__title">Korporatio — CI/CD и Deploy (Web + Solana)</h3>
-<p class="card__text">
-              Развёртывание frontend+backend из GitLab: сборка образов, деплой окружений, конфиги и reverse‑proxy.
-              CI для задач сборки/проверок смарт‑контрактов Solana, воспроизводимые релизы.
-            </p>
+<h3 class="card__title" data-i18n="project3Title">Korporatio — CI/CD и Deploy (Web + Solana)</h3>
+<p class="card__text" data-i18n="project3Text">Развёртывание frontend+backend из GitLab: сборка образов, деплой окружений, конфиги и reverse‑proxy. CI для задач сборки/проверок смарт‑контрактов Solana, воспроизводимые релизы.</p>
 <div class="meta">
 <span class="meta__item">GitLab CI/CD</span>
 <span class="meta__item">Docker</span>
@@ -302,11 +276,8 @@
 </article>
 <article class="card card--project">
 <div class="card__project-logo"><img src="assets/onthemend-logo.png" alt="On The Mend" class="card__project-logo-img" width="120" height="48"/></div>
-<h3 class="card__title">On The Mend — поддержка AWS окружений</h3>
-<p class="card__text">
-              Эксплуатация сервисов в AWS: ECS/EC2, балансировка через ALB, DNS Route53,
-              RDS (PostgreSQL), ElastiCache (Redis), S3, наблюдаемость в CloudWatch.
-            </p>
+<h3 class="card__title" data-i18n="project4Title">On The Mend — поддержка AWS окружений</h3>
+<p class="card__text" data-i18n="project4Text">Эксплуатация сервисов в AWS: ECS/EC2, балансировка через ALB, DNS Route53, RDS (PostgreSQL), ElastiCache (Redis), S3, наблюдаемость в CloudWatch.</p>
 <div class="meta">
 <span class="meta__item">AWS</span>
 <span class="meta__item">ALB/Route53</span>
@@ -320,37 +291,28 @@
 <!-- EXPERIENCE -->
 <section class="section" id="experience">
 <div class="container">
-<h2 class="section__title">Опыт и подход</h2>
+<h2 class="section__title" data-i18n="sectionExperienceTitle">Опыт и подход</h2>
 <div class="cards">
 <div class="card">
 <div class="card__topic">
 <img src="assets/sentry.svg" alt="" class="card__topic-icon" width="32" height="32" aria-hidden="true"/>
-<span class="card__title">Инциденты</span>
+<span class="card__title" data-i18n="expCard1Title">Инциденты</span>
 </div>
-<p class="card__text">
-              Сначала проверяю доступность upstream: Nginx, порты, pods/containers, логи, нагрузку (CPU/RAM/Disk),
-              затем устраняю причину и добавляю профилактику (алерты, лимиты, автоперезапуски, документация).
-            </p>
+<p class="card__text" data-i18n="expCard1Text">Сначала проверяю доступность upstream: Nginx, порты, pods/containers, логи, нагрузку (CPU/RAM/Disk), затем устраняю причину и добавляю профилактику (алерты, лимиты, автоперезапуски, документация).</p>
 </div>
 <div class="card">
 <div class="card__topic">
 <img src="assets/gitlab.svg" alt="" class="card__topic-icon" width="32" height="32" aria-hidden="true"/>
-<span class="card__title">CI/CD (значимый опыт)</span>
+<span class="card__title" data-i18n="expCard2Title">CI/CD (значимый опыт)</span>
 </div>
-<p class="card__text">
-              Перевёл ручные выкладки на GitLab CI/CD: сборка → публикация образов → деплой по SSH с безопасным reload Nginx.
-              Встроил миграции БД и health‑checks, добавил rollback по тегам.
-            </p>
+<p class="card__text" data-i18n="expCard2Text">Перевёл ручные выкладки на GitLab CI/CD: сборка → публикация образов → деплой по SSH с безопасным reload Nginx. Встроил миграции БД и health‑checks, добавил rollback по тегам.</p>
 </div>
 <div class="card">
 <div class="card__topic">
 <img src="assets/prometheus.svg" alt="" class="card__topic-icon" width="32" height="32" aria-hidden="true"/>
-<span class="card__title">Мониторинг</span>
+<span class="card__title" data-i18n="expCard3Title">Мониторинг</span>
 </div>
-<p class="card__text">
-              Обычно отслеживаю CPU, RAM, диск, сеть, количество соединений/ошибок, latency и RPS,
-              а также метрики БД и очередь/ретраи приложений.
-            </p>
+<p class="card__text" data-i18n="expCard3Text">Обычно отслеживаю CPU, RAM, диск, сеть, количество соединений/ошибок, latency и RPS, а также метрики БД и очередь/ретраи приложений.</p>
 </div>
 </div>
 </div>
@@ -362,44 +324,42 @@
 <div>
 <div class="section__title-wrap">
 <img src="assets/icon-telegram.svg" alt="" class="section__title-icon" width="36" height="36" aria-hidden="true"/>
-<h2 class="section__title">Контакты</h2>
+<h2 class="section__title" data-i18n="sectionContactsTitle">Контакты</h2>
 </div>
-<p class="section__lead">Открыт к предложениям (удалённо). Напишите в Telegram или на почту — отвечу в течение дня.</p>
+<p class="section__lead" data-i18n="sectionContactsLead">Открыт к предложениям (удалённо). Напишите в Telegram или на почту — отвечу в течение дня.</p>
 <div class="contact__links">
 <div class="contact__link contact__link--email">
 <span class="contact__k">Email</span>
 <span class="contact__v">
 <a href="mailto:gleb.moskalov@mail.ru">gleb.moskalov@mail.ru</a>
-<button type="button" class="contact__copy" aria-label="Скопировать email" title="Скопировать email в буфер" data-copy="gleb.moskalov@mail.ru">Копировать</button>
+<button type="button" class="contact__copy" data-i18n-aria="contactCopyAria" data-i18n-title="contactCopyAria" data-i18n="contactCopy" data-copy="gleb.moskalov@mail.ru">Копировать</button>
 </span>
 </div>
-<a class="contact__link contact__link--telegram link--external" href="https://t.me/nevnature" rel="noopener noreferrer" target="_blank" title="Открыть в Telegram">
+<a class="contact__link contact__link--telegram link--external" href="https://t.me/nevnature" rel="noopener noreferrer" target="_blank" data-i18n-title="contactTelegramTitle">
 <span class="contact__k">Telegram</span>
 <span class="contact__v">@nevnature</span>
 </a>
 <div class="contact__link contact__link--city">
-<span class="contact__k">Город</span>
-<span class="contact__v">Краснодар (удалённо)</span>
+<span class="contact__k" data-i18n="contactCity">Город</span>
+<span class="contact__v" data-i18n="contactCityVal">Краснодар (удалённо)</span>
 </div>
 </div>
 </div>
 <div class="contact__card">
-<div class="contact__card-title">Быстрое действие</div>
-<p class="contact__card-text">
-              Можно сразу скачать PDF и переслать в HR/руководителю.
-            </p>
-<a class="btn btn--primary btn--full" download="Gleb_Moskalev_CV.pdf" href="cv.pdf">Скачать резюме</a>
+<div class="contact__card-title" data-i18n="contactCardTitle">Быстрое действие</div>
+<p class="contact__card-text" data-i18n="contactCardText">Можно сразу скачать PDF и переслать в HR/руководителю.</p>
+<a class="btn btn--primary btn--full" download="Gleb_Moskalev_CV.pdf" href="cv.pdf" data-i18n="btnCv">Скачать резюме</a>
 </div>
 </div>
 </div>
 </section>
 <footer class="footer">
 <div class="container footer__inner">
-<div class="footer__left">© <span id="year"></span> Глеб Москалёв · Обновлено 22 февраля 2026 · <a href="#top" class="footer__top">Наверх</a></div>
-<div class="footer__right">Сделано на HTML/CSS/JS · Деплой в Kubernetes (minikube)</div>
+<div class="footer__left">© <span id="year"></span> Gleb Moskalev · <span data-i18n="footerUpdated">Обновлено 22 февраля 2026</span> · <a href="#top" class="footer__top" data-i18n="footerTop">Наверх</a></div>
+<div class="footer__right" data-i18n="footerMade">Сделано на HTML/CSS/JS · Деплой в Kubernetes (minikube)</div>
 </div>
 </footer>
-<a href="#top" class="back-to-top" id="backToTop" aria-label="Наверх">↑</a>
+<a href="#top" class="back-to-top" id="backToTop" data-i18n-aria="ariaBackToTop">↑</a>
 </main>
 <!-- маленький unobtrusive toast (не перекрывает контент) -->
 <div aria-atomic="true" aria-live="polite" class="toast" id="toast" role="status"></div>
