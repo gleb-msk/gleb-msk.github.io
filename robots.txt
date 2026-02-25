@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gleb-msk.github.io/sitemap.xml

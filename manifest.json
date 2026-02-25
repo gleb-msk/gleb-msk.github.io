@@ -2,30 +2,16 @@
   "name": "Глеб Москалёв — DevOps Engineer",
   "short_name": "GM Portfolio",
   "description": "Портфолио DevOps-инженера: проекты, навыки, опыт, контакты.",
-  "start_url": "/",
+  "start_url": "https://gleb-msk.github.io/",
+  "scope": "https://gleb-msk.github.io/",
   "display": "standalone",
   "background_color": "#0b1020",
   "theme_color": "#4f77ff",
   "orientation": "portrait-primary",
   "lang": "ru",
   "icons": [
-    {
-      "src": "favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
-    {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    }
+    {"src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"},
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}
   ]
 }

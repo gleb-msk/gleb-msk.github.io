@@ -73,6 +73,14 @@ html.theme-transition .scrollProgress {
 
 *{box-sizing:border-box}
 
+/* Фокус для клавиатуры (доступность) */
+:focus{ outline: none; }
+:focus-visible{
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+[data-theme="light"] :focus-visible{ outline-color: var(--brand); }
+
 /* Плавное появление страницы */
 body.page-load{
   opacity: 0;
@@ -680,6 +688,8 @@ button:focus-visible{
 [data-theme="light"] .quick a{ text-decoration-color:rgba(0,0,0,.20)}
 
 .hero__cta{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+.hero__cv-date{margin:4px 0 0; width:100%; font-size:0.8125rem; color:var(--muted2); font-weight:500}
+[data-theme="light"] .hero__cv-date{ color:var(--muted2)}
 
 .hero__right{display:grid; gap:14px}
 .avatar{
@@ -784,6 +794,48 @@ button:focus-visible{
 @media (prefers-reduced-motion: reduce) {
   .hero__bg { animation: none; }
 }
+
+/* Полоска ключевых слов под hero */
+.hero-strip{
+  position: relative;
+  padding: 18px 0;
+  background: var(--bg);
+}
+.hero-strip::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: min(85%, 640px);
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, rgba(79,119,255,.35), rgba(139,92,246,.3), transparent);
+  opacity: .85;
+  box-shadow: 0 0 20px rgba(79,119,255,.2);
+  pointer-events: none;
+}
+[data-theme="light"] .hero-strip::before{ opacity: .7; box-shadow: 0 0 16px rgba(79,119,255,.15); }
+.hero-strip__inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.hero-strip__label{
+  font-size: 0.75rem;
+  color: var(--muted2);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.hero-strip__text{
+  font-size: 0.875rem;
+  color: var(--muted2);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+[data-theme="light"] .hero-strip__text{ color: var(--muted2); }
 
 .section{
   padding: 56px 0;
@@ -1221,6 +1273,8 @@ a.contact__link{ text-decoration: none; color: inherit; }
   letter-spacing: -0.01em;
 }
 .contact__card-text{margin:10px 0 14px; color:var(--muted); line-height:1.7}
+.contact__cv-date{margin:8px 0 0; font-size:0.8125rem; color:var(--muted2); font-weight:500}
+[data-theme="light"] .contact__cv-date{ color:var(--muted2)}
 
 .footer{
   position: relative;
@@ -3187,4 +3241,12 @@ html.theme-transition .page-premium .pill {
   .page-premium .brand:hover {
     transform: none;
   }
+}
+
+/* Печать: только контент, без шапки/футера/кнопок */
+@media print {
+  .header, .footer, .back-to-top, .hero__cta, .btn, .theme-toggle, .lang-toggle, .burger, .mobile, .toast, .scrollProgress, .hero__bg { display: none !important; }
+  .hero { padding-top: 0; }
+  body { background: #fff; color: #000; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; opacity: 0.8; }
 }
