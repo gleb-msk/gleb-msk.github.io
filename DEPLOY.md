@@ -22,8 +22,9 @@
 
 ## 404 страница
 
-- Если хостинг позволяет указать свою страницу ошибки, укажите **404.html**.  
-  (На GitHub Pages, Netlify, Vercel и т.п. обычно подхватывается автоматически.)
+- **GitHub Pages:** положите **404.html** в корень репозитория (рядом с index.html) и запушьте — GitHub Pages автоматически показывает её при переходе по несуществующему URL.
+- **Docker / Kubernetes:** в проекте уже есть **nginx-default.conf** и в Dockerfile скопированы 404.html и этот конфиг — при сборке образа 404 подключается сама.
+- **Netlify, Vercel:** обычно подхватывают 404.html в корне автоматически.
 
 ---
 
@@ -86,7 +87,7 @@
 docker build -t portfolio:1.2 .
 ```
 
-В образ копируются: `index.html`, `styles.css`, `app.js`, `app-premium.js`, `gsap-premium.js`, `cv.pdf`, `assets/`.
+В образ копируются: `index.html`, `404.html`, `styles.css`, `app.js`, `app-premium.js`, `gsap-premium.js`, `cv.pdf`, `assets/`, конфиг Nginx (`nginx-default.conf`) для отдачи 404 при несуществующих путях.
 
 **Запуск контейнера:**
 ```bash

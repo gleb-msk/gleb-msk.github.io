@@ -4,14 +4,30 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>Страница не найдена — Глеб Москалёв</title>
+  <meta name="description" content="Страница не найдена. Вернуться на главную или связаться."/>
+  <meta name="theme-color" content="#0b1020"/>
   <link rel="icon" href="favicon.ico" sizes="any"/>
   <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
-  <link href="styles.css?v=20260221" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="styles.css?v=21" rel="stylesheet"/>
+  <style>
+    .error-page { min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 48px 24px; position: relative; }
+    .error-page__inner { max-width: 480px; }
+    .error-page__code { font-family: var(--font-heading); font-size: clamp(6rem, 18vw, 10rem); font-weight: 800; line-height: 1; margin: 0; background: linear-gradient(135deg, var(--brand), var(--brand2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.02em; text-shadow: 0 0 60px rgba(79,119,255,.25); }
+    .error-page__title { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; margin: 24px 0 12px; color: var(--text); }
+    .error-page__text { color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0 0 32px; }
+    .error-page__actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
+    .error-page .btn { padding: 12px 24px; border-radius: var(--radius); font-weight: 600; font-size: 15px; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+    .error-page .btn:hover { transform: translateY(-2px); }
+    .error-page .btn--primary { background: linear-gradient(135deg, var(--brand), var(--brand2)); color: #fff; border: none; box-shadow: 0 4px 20px rgba(79,119,255,.3); }
+    .error-page .btn--ghost { background: var(--card); border: 1px solid var(--glass-border); color: var(--text); }
+    .error-page .btn--ghost:hover { border-color: rgba(79,119,255,.25); box-shadow: 0 4px 20px rgba(0,0,0,.1); }
+    [data-theme="light"] .error-page__code { background: linear-gradient(135deg, #4338ca, #6366f1); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
 </head>
-<body>
+<body class="page-premium">
   <header class="header">
     <div class="container header__inner">
       <a aria-label="На главную" class="brand" href="index.html">
@@ -23,19 +39,22 @@
     </div>
   </header>
   <main>
-    <section class="section" style="min-height: 60vh; display: flex; align-items: center; justify-content: center;">
-      <div class="container" style="text-align: center;">
-        <p style="font-size: 6rem; margin: 0; font-weight: 800; line-height: 1; color: var(--muted2);">404</p>
-        <h1 style="font-family: var(--font-heading); font-size: 1.75rem; margin: 1rem 0 0.5rem;">Страница не найдена</h1>
-        <p style="color: var(--muted); margin: 0 0 1.5rem;">Возможно, ссылка устарела или страница была удалена.</p>
-        <a class="btn btn--primary" href="index.html">Вернуться на главную</a>
+    <section class="section error-page">
+      <div class="error-page__inner">
+        <p class="error-page__code" aria-hidden="true">404</p>
+        <h1 class="error-page__title">Страница не найдена</h1>
+        <p class="error-page__text">Запрашиваемая страница не существует или была перемещена. Вернитесь на главную или напишите в Telegram.</p>
+        <div class="error-page__actions">
+          <a class="btn btn--primary" href="index.html">На главную</a>
+          <a class="btn btn--ghost" href="https://t.me/nevnature" rel="noopener noreferrer" target="_blank">Написать в Telegram</a>
+        </div>
       </div>
     </section>
   </main>
   <footer class="footer">
     <div class="container footer__inner">
-      <div class="footer__left">© <span id="year"></span> Глеб Москалёв</div>
-      <div class="footer__right"><a href="index.html" class="footer__top">На главную</a></div>
+      <div class="footer__left">© <span id="year"></span> Gleb Moskalev · <a href="index.html" class="footer__top">На главную</a></div>
+      <div class="footer__right">Сделано на HTML/CSS/JS</div>
     </div>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>

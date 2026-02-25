@@ -5,14 +5,20 @@
 
   // Плавное появление страницы
   if (document.body) document.body.classList.add('page-load');
+  const showPage = () => {
+    if (!document.body) return;
+    document.body.classList.remove('page-load');
+    document.body.classList.add('loaded');
+  };
   const onReady = () => {
-    requestAnimationFrame(() => {
-      document.body.classList.remove('page-load');
-      document.body.classList.add('loaded');
-    });
+    requestAnimationFrame(showPage);
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', onReady);
   else onReady();
+  // Запас: если по ошибке JS страница так и не показалась — показать через 2.5 с
+  setTimeout(function () {
+    if (document.body && document.body.classList.contains('page-load')) showPage();
+  }, 2500);
 
   // Theme: сохранённый выбор или системная тема
   const themeBtn = document.getElementById('themeToggle');

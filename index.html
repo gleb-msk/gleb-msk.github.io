@@ -5,14 +5,18 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
 <title>Глеб Москалёв — DevOps Engineer</title>
-<meta content="Портфолио DevOps-инженера: проекты, навыки, опыт, контакты. Скачать резюме (PDF)." name="description"/>
+<meta content="DevOps с опытом в production: релизы без простоя, CI/CD, контейнеры, мониторинг. Открыт к Junior/Middle. Резюме (PDF), контакты." name="description"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Глеб Москалёв — DevOps Engineer"/>
-<meta property="og:description" content="Портфолио DevOps-инженера: проекты, навыки, опыт, контакты. Скачать резюме (PDF)."/>
+<meta property="og:description" content="DevOps с опытом в production: релизы без простоя, CI/CD, контейнеры. Открыт к Junior/Middle. Резюме (PDF)."/>
 <meta property="og:locale" content="ru_RU"/>
-<meta name="twitter:card" content="summary"/>
+<meta property="og:image" content="og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="og-image.png"/>
 <meta name="twitter:title" content="Глеб Москалёв — DevOps Engineer"/>
-<meta name="twitter:description" content="Портфолио DevOps-инженера: проекты, навыки, опыт, контакты."/>
+<meta name="twitter:description" content="DevOps с опытом в production: релизы без простоя, CI/CD. Открыт к Junior/Middle. Резюме, контакты."/>
 <meta name="theme-color" content="#0b1020"/>
 <link rel="icon" href="favicon.ico" sizes="any"/>
 <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
@@ -23,7 +27,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="styles.css?v=21" rel="stylesheet">
-<script src="i18n.js?v=1"></script>
+<script src="i18n.js?v=2"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Глеб Москалёв","jobTitle":"DevOps Engineer","description":"Эксплуатация и развитие production/stage инфраструктуры: Docker/Compose, GitLab CI/CD, Nginx/TLS, мониторинг.","email":"mailto:gleb.moskalov@mail.ru","sameAs":["https://t.me/nevnature"]}
 </script>
@@ -38,6 +42,8 @@
 </a>
 <nav aria-label="Навигация" class="nav">
 <a class="nav__link" href="#about" data-i18n="navAbout">Обо мне</a>
+<a class="nav__link" href="#career" data-i18n="navCareer">Карьера</a>
+<a class="nav__link" href="#education" data-i18n="navEducation">Образование</a>
 <a class="nav__link" href="#skills" data-i18n="navSkills">Навыки</a>
 <a class="nav__link" href="#projects" data-i18n="navProjects">Проекты</a>
 <a class="nav__link" href="#experience" data-i18n="navExperience">Опыт</a>
@@ -61,6 +67,8 @@
 <div aria-hidden="true" class="mobile" id="mobileMenu">
 <div class="mobile__inner">
 <a class="mobile__link" href="#about" data-i18n="navAbout">Обо мне</a>
+<a class="mobile__link" href="#career" data-i18n="navCareer">Карьера</a>
+<a class="mobile__link" href="#education" data-i18n="navEducation">Образование</a>
 <a class="mobile__link" href="#skills" data-i18n="navSkills">Навыки</a>
 <a class="mobile__link" href="#projects" data-i18n="navProjects">Проекты</a>
 <a class="mobile__link" href="#experience" data-i18n="navExperience">Опыт</a>
@@ -78,15 +86,16 @@
 <div class="hero__left">
 <div class="hero__badge">
 <span class="pill" data-i18n="heroPill1">DevOps Engineer</span>
-<span class="pill pill--muted" data-i18n="heroPill2">2+ года коммерческого опыта</span>
+<span class="pill pill--muted" data-i18n="heroPill2">2+ года в production</span>
 <span class="pill pill--muted" data-i18n="heroPill3">Удалённо</span>
 </div>
 <h1 class="hero__title" data-i18n="heroTitle">Глеб Москалёв</h1>
-<p class="hero__subtitle" data-i18n="heroSubtitle">Эксплуатация и развитие production/stage инфраструктуры: Docker/Compose, GitLab CI/CD, Nginx/TLS, DNS/Proxy, Postgres/Redis, мониторинг и инциденты.</p>
+<p class="hero__tagline" data-i18n="heroTagline">Релизы без простоя. Команда выкатывает быстрее — инфраструктура под контролем.</p>
+<p class="hero__subtitle" data-i18n="heroSubtitle">Обеспечиваю стабильную работу production и stage: контейнеры, CI/CD, мониторинг. Релизы без сюрпризов, сбои — под контролем.</p>
 <div class="hero__quick">
 <div class="quick">
 <div class="quick__k" data-i18n="heroQuickFocus">Фокус</div>
-<div class="quick__v" data-i18n="heroQuickFocusVal">стабильные релизы, воспроизводимость, self‑healing, rollback/backup</div>
+<div class="quick__v" data-i18n="heroQuickFocusVal">релизы без простоя, быстрый откат, меньше инцидентов</div>
 </div>
 <div class="quick">
 <div class="quick__k" data-i18n="heroQuickCity">Город</div>
@@ -96,14 +105,12 @@
 <div class="quick__k" data-i18n="heroQuickContacts">Контакты</div>
 <div class="quick__v quick__v--contacts">
 <a href="mailto:gleb.moskalov@mail.ru">gleb.moskalov@mail.ru</a>
-<a class="quick__icon" href="https://t.me/nevnature" rel="noopener noreferrer" target="_blank" data-i18n-title="contactTelegramTitle"><span class="quick__icon-label">TELEGRAM</span>
-<img src="assets/icon-telegram.svg" alt="" width="24" height="24" aria-hidden="true"/>
-</a>
 </div>
 </div>
 </div>
 <div class="hero__cta">
 <a class="btn btn--primary" href="#projects" data-i18n="heroCtaProjects">Смотреть проекты</a>
+<a class="btn btn--primary btn--telegram" href="https://t.me/nevnature" rel="noopener noreferrer" target="_blank" data-i18n="heroCtaTelegram">Написать в Telegram</a>
 <a class="btn btn--ghost" href="#contacts"><span class="btn__text" data-i18n="heroCtaContact">Связаться</span><span class="btn__arrow" aria-hidden="true">→</span></a>
 </div>
 </div>
@@ -114,9 +121,9 @@
 <div class="hero__card">
 <div class="hero__card-title" data-i18n="heroStrengthsTitle">Сильные стороны</div>
 <ul class="bullets reveal-stagger">
-<li data-i18n="heroStrengths1">Диагностика 502/504, рестарты контейнеров, алерты/логирование.</li>
-<li data-i18n="heroStrengths2">Релизы без простоя: health‑checks, миграции, rollback.</li>
-<li data-i18n="heroStrengths3">DNS/edge: Cloudflare/GoDaddy, TLS (Let's Encrypt), reverse‑proxy.</li>
+<li data-i18n="heroStrengths1">Быстро нахожу причину сбоев и возвращаю сервис в строй — логи, метрики, алерты.</li>
+<li data-i18n="heroStrengths2">Релизы без простоя: продуманные health‑checks, миграции БД, откат за минуты.</li>
+<li data-i18n="heroStrengths3">Надёжный edge: DNS, TLS, reverse‑proxy — сервис доступен и защищён.</li>
 </ul>
 </div>
 </div>
@@ -130,21 +137,92 @@
 <img src="assets/icon-person.svg" alt="" class="section__title-icon" width="36" height="36" aria-hidden="true"/>
 <h2 class="section__title" data-i18n="sectionAboutTitle">Обо мне</h2>
 </div>
-<p class="section__lead" data-i18n="sectionAboutLead">Middle DevOps-инженер с практическим опытом поддержки и развития веб‑платформ на Linux. Ставлю цель: быстрые, безопасные релизы и стабильная работа сервисов после обновлений.</p>
+<p class="section__lead" data-i18n="sectionAboutLead">DevOps-инженер с опытом в production: делаю так, чтобы релизы проходили без простоя, а сбои не повторялись. Фокус — быстрая доставка и стабильность сервисов.</p>
 <div class="cards">
 <div class="card">
 <div class="card__topic">
 <img src="assets/icon-hands.svg" alt="" class="card__topic-icon" width="32" height="32" aria-hidden="true"/>
-<span class="card__title" data-i18n="aboutCard1Title">Что делаю руками</span>
+<span class="card__title" data-i18n="aboutCard1Title">Чем полезен</span>
 </div>
-<p class="card__text" data-i18n="aboutCard1Text">Docker/Compose окружения (frontend/backend/db), Nginx как edge, GitLab CI/CD (build → push → deploy), миграции БД в релизном процессе, backup/restore, мониторинг и разбор инцидентов.</p>
+<p class="card__text" data-i18n="aboutCard1Text">Поднимаю и веду окружения под ключ: контейнеры, Nginx, CI/CD от сборки до деплоя, миграции БД в релизе, бэкапы и восстановление. Плюс мониторинг и разбор инцидентов — сервис под контролем.</p>
 </div>
 <div class="card">
 <div class="card__topic">
 <img src="assets/icon-laptop.svg" alt="" class="card__topic-icon" width="32" height="32" aria-hidden="true"/>
-<span class="card__title" data-i18n="aboutCard2Title">Как работаю</span>
+<span class="card__title" data-i18n="aboutCard2Title">Подход к сбоям</span>
 </div>
-<p class="card__text" data-i18n="aboutCard2Text">В первую очередь — восстановить доступность (reduce blast radius), затем найти root cause, зафиксировать в документации и добавить защиту (алерты, лимиты, health‑checks, runbooks).</p>
+<p class="card__text" data-i18n="aboutCard2Text">Сначала возвращаю доступность и ограничиваю зону влияния, затем ищу причину и фиксирую в документации. Добавляю защиту: алерты, лимиты, health‑checks и runbooks, чтобы инцидент не повторился.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CAREER -->
+<section class="section" id="career">
+<div class="container">
+<div class="section__head">
+<h2 class="section__title" data-i18n="sectionCareerTitle">Карьера</h2>
+<p class="section__hint" data-i18n="sectionCareerHint">Компании и роли за последние годы.</p>
+</div>
+<div class="career-timeline">
+<div class="career-item career-item--intern">
+<span class="career__period" data-i18n="career0Period">сен 2023 — дек 2023</span>
+<div class="career__info">
+<strong class="career__company">Technorely</strong>
+<span class="career__role" data-i18n="career0Role">DevOps Intern (стажировка)</span>
+</div>
+</div>
+<div class="career-item">
+<span class="career__period" data-i18n="career1Period">дек 2023 — н.в.</span>
+<div class="career__info">
+<strong class="career__company">Technorely</strong>
+<span class="career__role" data-i18n="career1Role">DevOps Engineer</span>
+</div>
+</div>
+<div class="career-item">
+<span class="career__period" data-i18n="career2Period">дек 2023 — н.в.</span>
+<div class="career__info">
+<strong class="career__company">On The Mend</strong>
+<span class="career__role" data-i18n="career2Role">DevOps Engineer (AWS)</span>
+</div>
+</div>
+<div class="career-item">
+<span class="career__period" data-i18n="career3Period">дек 2023 — н.в.</span>
+<div class="career__info">
+<strong class="career__company">Korporatio</strong>
+<span class="career__role" data-i18n="career3Role">DevOps Engineer (Web + Solana)</span>
+</div>
+</div>
+<div class="career-item">
+<span class="career__period" data-i18n="career4Period">дек 2023 — н.в.</span>
+<div class="career__info">
+<strong class="career__company">Careclix</strong>
+<span class="career__role" data-i18n="career4Role">DevOps Engineer</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- EDUCATION -->
+<section class="section" id="education">
+<div class="container">
+<div class="section__head">
+<h2 class="section__title" data-i18n="sectionEducationTitle">Образование</h2>
+<p class="section__hint" data-i18n="sectionEducationHint">Вуз и стажировка.</p>
+</div>
+<div class="career-timeline">
+<div class="career-item">
+<span class="career__period" data-i18n="edu1Period">сен 2018 — июн 2020</span>
+<div class="career__info">
+<strong class="career__company" data-i18n="edu1Name">Национальный юридический университет им. Ярослава Мудрого</strong>
+<span class="career__role" data-i18n="edu1Role">Высшее образование</span>
+</div>
+</div>
+<div class="career-item">
+<span class="career__period" data-i18n="edu2Period">сен 2023 — дек 2023</span>
+<div class="career__info">
+<strong class="career__company">Technorely</strong>
+<span class="career__role" data-i18n="edu2Role">DevOps Intern (стажировка)</span>
+</div>
 </div>
 </div>
 </div>
@@ -154,7 +232,7 @@
 <div class="container">
 <div class="section__head">
 <h2 class="section__title" data-i18n="sectionSkillsTitle">Навыки</h2>
-<p class="section__hint" data-i18n="sectionSkillsHint">Технологии, с которыми работал/работаю (часть — в процессе изучения).</p>
+<p class="section__hint" data-i18n="sectionSkillsHint">Инструменты и стек, с которыми работаю в production (часть — в активной практике).</p>
 </div>
 <div class="skillgrid">
 <div class="skillgroup">
@@ -238,52 +316,56 @@
 <div class="container">
 <div class="section__head">
 <h2 class="section__title" data-i18n="sectionProjectsTitle">Проекты</h2>
-<p class="section__hint" data-i18n="sectionProjectsHint">2–3 ключевых кейса + инфраструктурные задачи.</p>
+<p class="section__hint" data-i18n="sectionProjectsHint">Ключевые кейсы: что сделал и какой результат.</p>
 </div>
 <div class="cards cards--projects">
 <article class="card card--project">
 <div class="card__project-logo"><img src="assets/technorely-logo.png" alt="Technorely" class="card__project-logo-img" width="120" height="48"/></div>
-<h3 class="card__title" data-i18n="project1Title">Technorely — prod/stage и preview окружения</h3>
-<p class="card__text" data-i18n="project1Text">Docker Compose (frontend/backend/PostgreSQL/Redis), Nginx edge (TLS Let's Encrypt), GitLab CI/CD релизы, миграции БД, rollback и восстановление из дампа, preview стенды для feat/*.</p>
+<h3 class="card__title" data-i18n="project1Title">Technorely — стабильный prod и preview для команды</h3>
+<p class="card__text" data-i18n="project1Text">Поддержка и развитие инфраструктуры веб-платформы: Docker Compose (frontend/backend/Postgres/Redis), Nginx + TLS, GitLab CI/CD с деплоем по тегам. Встроил миграции БД в релиз, откат и восстановление из дампа. Поднял preview-окружения для веток feat/* — команда проверяет фичи до мержа без риска для prod.</p>
 <div class="meta">
 <span class="meta__item">Docker/Compose</span>
 <span class="meta__item">GitLab CI/CD</span>
 <span class="meta__item">Nginx/TLS</span>
 <span class="meta__item">Postgres/Redis</span>
 </div>
+<a class="card__project-link link--external" href="https://technorely.com" rel="noopener noreferrer" target="_blank" data-i18n="projectLink1">Сайт: technorely.com</a>
 </article>
 <article class="card card--project">
 <div class="card__project-logo"><img src="assets/careclix-logo.png" alt="Careclix" class="card__project-logo-img" width="120" height="48"/></div>
-<h3 class="card__title" data-i18n="project2Title">Careclix — тестовые окружения и домены</h3>
-<p class="card__text" data-i18n="project2Text">Изолированные стенды для dev/QA: Docker/Compose на VM, поддомены, reverse‑proxy, SSL по необходимости. Основная платформа компании — GitHub + GCP/Kubernetes (миграцию делала другая команда).</p>
+<h3 class="card__title" data-i18n="project2Title">Careclix — изолированные стенды для dev и QA</h3>
+<p class="card__text" data-i18n="project2Text">Развёртывание и сопровождение тестовых окружений: Docker/Compose на VM, поддомены, reverse‑proxy, SSL по необходимости. Команда получает стабильные стенды для разработки и проверок. Основная платформа компании — GitHub + GCP/Kubernetes (миграцию вела другая команда); я обеспечивал временные Docker-окружения и инфраструктурную поддержку.</p>
 <div class="meta">
 <span class="meta__item">Docker/Compose</span>
 <span class="meta__item">Nginx</span>
 <span class="meta__item">DNS/SSL</span>
 <span class="meta__item">GitHub</span>
 </div>
+<a class="card__project-link link--external" href="https://careclix.com" rel="noopener noreferrer" target="_blank" data-i18n="projectLink2">Сайт: careclix.com</a>
 </article>
 <article class="card card--project">
 <div class="card__project-logo"><img src="assets/korporatio-logo.png" alt="Korporatio" class="card__project-logo-img" width="120" height="48"/></div>
-<h3 class="card__title" data-i18n="project3Title">Korporatio — CI/CD и Deploy (Web + Solana)</h3>
-<p class="card__text" data-i18n="project3Text">Развёртывание frontend+backend из GitLab: сборка образов, деплой окружений, конфиги и reverse‑proxy. CI для задач сборки/проверок смарт‑контрактов Solana, воспроизводимые релизы.</p>
+<h3 class="card__title" data-i18n="project3Title">Korporatio — CI/CD для Web и Solana</h3>
+<p class="card__text" data-i18n="project3Text">Деплой frontend и backend из GitLab: сборка образов, окружения, конфиги, reverse‑proxy. Настроил CI/CD для бэкенда и смарт-контрактов Solana — воспроизводимые сборки и единый процесс доставки. После обновлений держу стабильность: диагностика, логи, правки деплоя.</p>
 <div class="meta">
 <span class="meta__item">GitLab CI/CD</span>
 <span class="meta__item">Docker</span>
 <span class="meta__item">Nginx</span>
 <span class="meta__item">Solana CI</span>
 </div>
+<a class="card__project-link link--external" href="https://korporatio.com" rel="noopener noreferrer" target="_blank" data-i18n="projectLink3">Сайт: korporatio.com</a>
 </article>
 <article class="card card--project">
 <div class="card__project-logo"><img src="assets/onthemend-logo.png" alt="On The Mend" class="card__project-logo-img" width="120" height="48"/></div>
-<h3 class="card__title" data-i18n="project4Title">On The Mend — поддержка AWS окружений</h3>
-<p class="card__text" data-i18n="project4Text">Эксплуатация сервисов в AWS: ECS/EC2, балансировка через ALB, DNS Route53, RDS (PostgreSQL), ElastiCache (Redis), S3, наблюдаемость в CloudWatch.</p>
+<h3 class="card__title" data-i18n="project4Title">On The Mend — production в AWS под контролем</h3>
+<p class="card__text" data-i18n="project4Text">Поддержка prod/stage в облаке: ECS/EC2, ALB, Route53, RDS (PostgreSQL), ElastiCache (Redis), S3. Мониторинг и разбор инцидентов через CloudWatch. Результат — сервисы стабильны после релизов, сбои разбираются и закрываются профилактикой.</p>
 <div class="meta">
 <span class="meta__item">AWS</span>
 <span class="meta__item">ALB/Route53</span>
 <span class="meta__item">RDS/Redis</span>
 <span class="meta__item">CloudWatch</span>
 </div>
+<a class="card__project-link link--external" href="https://onthemend.com" rel="noopener noreferrer" target="_blank" data-i18n="projectLink4">Сайт: onthemend.com</a>
 </article>
 </div>
 </div>
@@ -298,21 +380,21 @@
 <img src="assets/sentry.svg" alt="" class="card__topic-icon" width="32" height="32" aria-hidden="true"/>
 <span class="card__title" data-i18n="expCard1Title">Инциденты</span>
 </div>
-<p class="card__text" data-i18n="expCard1Text">Сначала проверяю доступность upstream: Nginx, порты, pods/containers, логи, нагрузку (CPU/RAM/Disk), затем устраняю причину и добавляю профилактику (алерты, лимиты, автоперезапуски, документация).</p>
+<p class="card__text" data-i18n="expCard1Text">Быстро возвращаю сервис в строй: проверка upstream (Nginx, порты, контейнеры), логи, нагрузка. Устраняю причину и закрепляю результат — алерты, лимиты, автоперезапуски и документация, чтобы подобное не повторилось.</p>
 </div>
 <div class="card">
 <div class="card__topic">
 <img src="assets/gitlab.svg" alt="" class="card__topic-icon" width="32" height="32" aria-hidden="true"/>
-<span class="card__title" data-i18n="expCard2Title">CI/CD (значимый опыт)</span>
+<span class="card__title" data-i18n="expCard2Title">CI/CD</span>
 </div>
-<p class="card__text" data-i18n="expCard2Text">Перевёл ручные выкладки на GitLab CI/CD: сборка → публикация образов → деплой по SSH с безопасным reload Nginx. Встроил миграции БД и health‑checks, добавил rollback по тегам.</p>
+<p class="card__text" data-i18n="expCard2Text">Перевёл ручные выкладки в GitLab CI/CD: сборка → образы → деплой по SSH с безопасным reload Nginx. Встроил миграции БД и health‑checks, откат по тегам — релизы предсказуемые и без простоя.</p>
 </div>
 <div class="card">
 <div class="card__topic">
 <img src="assets/prometheus.svg" alt="" class="card__topic-icon" width="32" height="32" aria-hidden="true"/>
 <span class="card__title" data-i18n="expCard3Title">Мониторинг</span>
 </div>
-<p class="card__text" data-i18n="expCard3Text">Обычно отслеживаю CPU, RAM, диск, сеть, количество соединений/ошибок, latency и RPS, а также метрики БД и очередь/ретраи приложений.</p>
+<p class="card__text" data-i18n="expCard3Text">Держу под контролем то, от чего зависит стабильность: CPU, RAM, диск, сеть, соединения и ошибки, latency, RPS, метрики БД и очереди приложений. Цель — заметить проблему до пользователя.</p>
 </div>
 </div>
 </div>
@@ -326,7 +408,8 @@
 <img src="assets/icon-telegram.svg" alt="" class="section__title-icon" width="36" height="36" aria-hidden="true"/>
 <h2 class="section__title" data-i18n="sectionContactsTitle">Контакты</h2>
 </div>
-<p class="section__lead" data-i18n="sectionContactsLead">Открыт к предложениям (удалённо). Напишите в Telegram или на почту — отвечу в течение дня.</p>
+<p class="section__lead" data-i18n="sectionContactsLead">Открыт к предложениям. Напишите в Telegram или на почту — отвечу в течение дня.</p>
+<div class="contact__looking" data-i18n="contactLooking">Ищу позицию Junior или Middle DevOps. Готов подтвердить уровень на собеседовании и к тестовому заданию. Удалённо или релокация. CI/CD, контейнеры, мониторинг.</div>
 <div class="contact__links">
 <div class="contact__link contact__link--email">
 <span class="contact__k">Email</span>
@@ -343,11 +426,15 @@
 <span class="contact__k" data-i18n="contactCity">Город</span>
 <span class="contact__v" data-i18n="contactCityVal">Краснодар (удалённо)</span>
 </div>
+<div class="contact__link contact__link--languages">
+<span class="contact__k" data-i18n="contactLanguages">Языки</span>
+<span class="contact__v" data-i18n="contactLanguagesVal">Русский — родной, English B1</span>
+</div>
 </div>
 </div>
 <div class="contact__card">
 <div class="contact__card-title" data-i18n="contactCardTitle">Быстрое действие</div>
-<p class="contact__card-text" data-i18n="contactCardText">Можно сразу скачать PDF и переслать в HR/руководителю.</p>
+<p class="contact__card-text" data-i18n="contactCardText">Скачайте актуальное резюме в PDF — удобно отправить в ATS или переслать HR и руководителю.</p>
 <a class="btn btn--primary btn--full" download="Gleb_Moskalev_CV.pdf" href="cv.pdf" data-i18n="btnCv">Скачать резюме</a>
 </div>
 </div>
@@ -355,8 +442,8 @@
 </section>
 <footer class="footer">
 <div class="container footer__inner">
-<div class="footer__left">© <span id="year"></span> Gleb Moskalev · <span data-i18n="footerUpdated">Обновлено 22 февраля 2026</span> · <a href="#top" class="footer__top" data-i18n="footerTop">Наверх</a></div>
-<div class="footer__right" data-i18n="footerMade">Сделано на HTML/CSS/JS · Деплой в Kubernetes (minikube)</div>
+<div class="footer__left">© <span id="year"></span> Gleb Moskalev · <span data-i18n="footerUpdated">Обновлено 25 февраля 2026</span> · <a href="#top" class="footer__top" data-i18n="footerTop">Наверх</a></div>
+<div class="footer__right" data-i18n="footerMade">Сделано на HTML/CSS/JS · Локально: Kubernetes (minikube), в интернет: GitHub Pages</div>
 <div class="footer__counter" aria-hidden="true">
   <span data-i18n="counterVisits">Просмотров</span>: <span id="busuanzi_value_site_pv">–</span> · <span data-i18n="counterVisitors">Посетителей</span>: <span id="busuanzi_value_site_uv">–</span>
 </div>
