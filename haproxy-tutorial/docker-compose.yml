@@ -1,0 +1,21 @@
+services:
+  haproxy:
+    image: haproxy:2.8-alpine
+    container_name: haproxy
+    ports:
+      - "8080:80"
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    depends_on:
+      - app1
+      - app2
+    restart: unless-stopped
+
+  # Два бэкенда — отвечают разным текстом, чтобы видеть, на кого пошёл запрос
+  app1:
+    image: containous/whoami
+    container_name: app1
+
+  app2:
+    image: containous/whoami
+    container_name: app2
