@@ -254,8 +254,8 @@ button:focus-visible{
   transition: box-shadow .25s ease, border-color .25s ease;
 }
 .brand:hover .brand__logo{
-  box-shadow: 0 8px 28px rgba(79,119,255,.2);
-  border-color: rgba(79,119,255,.3);
+  box-shadow: 0 4px 16px rgba(79,119,255,.12);
+  border-color: rgba(79,119,255,.2);
 }
 
 .nav{display:flex; gap:18px; align-items:center}
@@ -363,22 +363,22 @@ button:focus-visible{
 }
 .theme-toggle--light .theme-toggle__thumb{
   transform: translateX(36px);
-  background: linear-gradient(145deg, #fff9e6, #ffecb3);
-  box-shadow: 0 2px 10px rgba(255,193,7,.4);
+  background: linear-gradient(145deg, #fff8e1, #ffecb3);
+  box-shadow: 0 2px 6px rgba(0,0,0,.15), 0 0 0 1px rgba(0,0,0,.06);
 }
 .theme-toggle__icon{
   position: absolute;
-  font-size: 16px;
-  opacity: .6;
+  font-size: 14px;
+  opacity: .5;
   pointer-events: none;
   transition: opacity .3s ease, transform .3s ease;
 }
 .theme-toggle__icon--moon{ left: 12px; }
 .theme-toggle__icon--sun{ right: 12px; }
-.theme-toggle--light .theme-toggle__icon--moon{ opacity: .25; transform: scale(0.9); }
-.theme-toggle--light .theme-toggle__icon--sun{ opacity: .95; transform: scale(1.1); }
-.theme-toggle:not(.theme-toggle--light) .theme-toggle__icon--sun{ opacity: .25; transform: scale(0.9); }
-.theme-toggle:not(.theme-toggle--light) .theme-toggle__icon--moon{ opacity: .95; transform: scale(1.1); }
+.theme-toggle--light .theme-toggle__icon--moon{ opacity: .2; transform: scale(0.85); }
+.theme-toggle--light .theme-toggle__icon--sun{ opacity: .55; transform: scale(0.95); }
+.theme-toggle:not(.theme-toggle--light) .theme-toggle__icon--sun{ opacity: .2; transform: scale(0.85); }
+.theme-toggle:not(.theme-toggle--light) .theme-toggle__icon--moon{ opacity: .55; transform: scale(0.95); }
 
 .btn{
   display:inline-flex; align-items:center; justify-content:center;
@@ -395,12 +395,12 @@ button:focus-visible{
   overflow: hidden;
   font-family: var(--font-heading);
   font-weight: 700;
-  background: var(--gradient-brand);
-  border: none;
+  background: linear-gradient(135deg, rgba(79,119,255,.85), rgba(139,92,246,.8));
+  border: 1px solid rgba(255,255,255,.12);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,.1) inset,
-    0 4px 20px rgba(79,119,255,.35),
-    0 12px 32px rgba(0,0,0,.2);
+    0 0 0 1px rgba(255,255,255,.06) inset,
+    0 2px 12px rgba(79,119,255,.2),
+    0 6px 20px rgba(0,0,0,.15);
   transition: transform .25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow .35s ease;
 }
 .btn--primary::after{
@@ -408,26 +408,25 @@ button:focus-visible{
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(180deg, rgba(255,255,255,.15) 0%, transparent 50%);
+  background: linear-gradient(180deg, rgba(255,255,255,.12) 0%, transparent 50%);
   opacity: 0;
   transition: opacity .3s ease;
   pointer-events: none;
 }
 .btn--primary:hover::after{ opacity: 1; }
 .btn--primary:hover{
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,.15) inset,
-    0 0 32px rgba(79,119,255,.25),
-    0 8px 28px rgba(79,119,255,.3),
-    0 16px 48px rgba(0,0,0,.25);
+    0 0 0 1px rgba(255,255,255,.1) inset,
+    0 4px 16px rgba(79,119,255,.22),
+    0 8px 24px rgba(0,0,0,.2);
 }
 .btn--primary:active { transform: translateY(0); }
 [data-theme="light"] .btn--primary{
-  box-shadow: 0 4px 20px rgba(79,119,255,.25), 0 12px 32px rgba(0,0,0,.08);
+  box-shadow: 0 2px 12px rgba(79,119,255,.18), 0 6px 20px rgba(0,0,0,.06);
 }
 [data-theme="light"] .btn--primary:hover{
-  box-shadow: 0 0 32px rgba(79,119,255,.2), 0 8px 28px rgba(79,119,255,.25), 0 16px 48px rgba(0,0,0,.06);
+  box-shadow: 0 4px 20px rgba(79,119,255,.22), 0 8px 28px rgba(0,0,0,.08);
 }
 .btn--ghost{
   background: var(--card);
@@ -557,7 +556,10 @@ button:focus-visible{
   grid-template-columns: 1.15fr .85fr;
   gap: 32px;
   align-items:start;
+  min-width: 0;
 }
+.hero__left{ min-width: 0; }
+.hero__right{ min-width: 0; }
 .hero__badge{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px}
 .pill{
   display:inline-flex; align-items:center;
@@ -821,6 +823,8 @@ button:focus-visible{
   flex-direction: column;
   align-items: center;
   gap: 6px;
+  min-width: 0;
+  overflow: hidden;
 }
 .hero-strip__label{
   font-size: 0.75rem;
@@ -1392,17 +1396,38 @@ a.contact__link{ text-decoration: none; color: inherit; }
 @media (max-width: 720px){
   .nav{display:none}
   .burger{display:inline-grid; place-items:center}
+  .header__actions .btn--primary{display:none}
   .header__cta .btn.btn--primary{display:none}
   .mobile{ display: block; }
   .hero{padding-top:24px}
   .hero__title{font-size:38px}
+  .hero__tagline{ font-size: 1rem; max-width: 100%; }
+  .hero__subtitle{ max-width: 100%; }
+  .hero__quick{ grid-template-columns: 1fr; }
+  .hero__cta{ flex-direction: column; align-items: flex-start; }
   .skillgrid{grid-template-columns: 1fr}
+  .contact{ grid-template-columns: 1fr; gap: 20px; }
+  .footer__inner{ flex-wrap: wrap; gap: 10px; }
 }
 
 
 /* --- Logo captions (skills) --- */
 @media (max-width: 520px){
-  }
+  .container{ padding-left: 16px; padding-right: 16px; }
+  .hero__title{ font-size: 28px; line-height: 1.2; }
+  .hero__tagline{ font-size: 0.9375rem; }
+  .hero__subtitle{ font-size: 0.9375rem; }
+  .avatar{ height: clamp(220px, 45vh, 320px); }
+  .card{ padding: 18px 16px; }
+  .section__lead{ font-size: 0.9375rem; }
+  .hero__card{ padding: 16px; }
+  .quick{ padding: 12px 14px; }
+  .hero-strip__text{ font-size: 0.8125rem; white-space: normal; word-break: break-word; }
+  .brand__logo{ padding: 0 12px; height: 38px; font-size: 0.9rem; }
+  .header__inner{ padding: 12px 0; gap: 8px; }
+  .section__title{ font-size: 1.5rem; }
+  .card__title{ font-size: 1rem; }
+}
 
 .logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:14px}
 .logo{
@@ -2142,15 +2167,15 @@ html[data-theme="light"] .page-premium .hero__title::after {
   box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.25), 0 6px 24px rgba(79, 119, 255, 0.15);
 }
 
-/* Primary CTA — shine при hover */
+/* Primary CTA — умеренный hover */
 .page-premium .hero__cta .btn--primary {
   position: relative;
   overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.35s ease;
 }
 .page-premium .hero__cta .btn--primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(79, 119, 255, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(79, 119, 255, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
 }
 .page-premium .hero__cta .btn--primary::after {
   content: "";
@@ -2159,7 +2184,7 @@ html[data-theme="light"] .page-premium .hero__title::after {
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
   transition: left 0.6s ease;
 }
 .page-premium .hero__cta .btn--primary:hover::after {
@@ -2480,14 +2505,13 @@ html[data-theme="light"] .page-premium .hero__title::after {
    Дополнительные улучшения
    ═══════════════════════════════════════════════════════════════════ */
 
-/* Логотип в шапке — свечение при hover */
+/* Логотип в шапке — лёгкий акцент при hover */
 .page-premium .brand__logo {
   transition: box-shadow 0.3s ease, border-color 0.25s ease;
 }
 .page-premium .brand:hover .brand__logo {
-  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.3),
-              0 8px 28px rgba(79, 119, 255, 0.25),
-              0 0 32px rgba(79, 119, 255, 0.15);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.2),
+              0 4px 16px rgba(79, 119, 255, 0.12);
 }
 
 /* Ссылка «Перейти к контенту» — при фокусе премиум-вид */
@@ -2707,22 +2731,22 @@ html[data-theme="light"] .page-premium::-webkit-scrollbar-thumb:hover {
    Ещё: кнопка в шапке, контакт-карточка, CTA hero, reduced motion
    ═══════════════════════════════════════════════════════════════════ */
 
-/* Кнопка «Скачать резюме» в шапке — лёгкое свечение в покое, плавный hover */
+/* Кнопка «Скачать резюме» в шапке — спокойный вид */
 .page-premium .header .btn--primary {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
-              0 4px 20px rgba(79, 119, 255, 0.3),
-              0 0 24px rgba(79, 119, 255, 0.12);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08),
+              0 2px 12px rgba(79, 119, 255, 0.2),
+              0 4px 16px rgba(0, 0, 0, 0.12);
   transition: box-shadow 0.3s ease, transform 0.25s ease;
 }
 .page-premium .header .btn--primary:hover {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15),
-              0 8px 28px rgba(79, 119, 255, 0.4),
-              0 0 36px rgba(79, 119, 255, 0.2);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+              0 4px 20px rgba(79, 119, 255, 0.25),
+              0 8px 24px rgba(0, 0, 0, 0.15);
 }
 [data-theme="light"] .page-premium .header .btn--primary {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3),
-              0 4px 20px rgba(79, 119, 255, 0.25),
-              0 0 20px rgba(79, 119, 255, 0.08);
+  box-shadow: 0 0 0 1px rgba(79, 119, 255, 0.2),
+              0 2px 12px rgba(79, 119, 255, 0.18),
+              0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 /* Контакт-карточка (блок справа в Контактах) — левая акцентная полоска */
@@ -3218,10 +3242,10 @@ html.theme-transition .page-premium .pill {
 /* Кнопка в шапке — фокус для клавиатуры */
 .page-premium .header .btn--primary:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand), 0 8px 28px rgba(79, 119, 255, 0.35), 0 0 36px rgba(79, 119, 255, 0.2);
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand), 0 4px 20px rgba(79, 119, 255, 0.22);
 }
 [data-theme="light"] .page-premium .header .btn--primary:focus-visible {
-  box-shadow: 0 0 0 2px var(--bg2), 0 0 0 4px var(--brand), 0 8px 28px rgba(79, 119, 255, 0.3), 0 0 28px rgba(79, 119, 255, 0.12);
+  box-shadow: 0 0 0 2px var(--bg2), 0 0 0 4px var(--brand), 0 4px 20px rgba(79, 119, 255, 0.2);
 }
 
 /* Уменьшение движения — без подъёма/сдвига при hover */
