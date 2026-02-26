@@ -236,6 +236,10 @@ button:focus-visible{
 }
 .brand{
   transition: transform .2s ease, opacity .2s ease;
+  margin-left: -10px;
+}
+.header__actions .btn--primary{
+  margin-left: auto;
 }
 .brand:hover{ opacity: 1; transform: scale(1.02); }
 .brand__logo{
@@ -1398,6 +1402,7 @@ a.contact__link{ text-decoration: none; color: inherit; }
   .burger{display:inline-grid; place-items:center}
   .header__actions .btn--primary{display:none}
   .header__cta .btn.btn--primary{display:none}
+  .brand{ margin-left: 0; }
   .mobile{ display: block; }
   .hero{padding-top:24px}
   .hero__title{font-size:38px}
